@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>BLE开发-Android程序 - Hexo</title>
+
+
+    <meta name="description" content="Ble Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BLE开发-Android程序">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;02&#x2F;27&#x2F;BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ble Android">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-02-27T11:53:30.395Z">
+<meta property="article:modified_time" content="2019-12-21T07:02:47.542Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="BLE开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="BLE开发-Android程序" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 分钟 读完 (大约 2847 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                BLE开发-Android程序
+            
+        </h1>
+        <div class="content">
+            <p>Ble Android</p>
+<a id="more"></a>
+
+<h1 id="程序连接设备流程"><a href="#程序连接设备流程" class="headerlink" title="程序连接设备流程"></a>程序连接设备流程</h1><img src="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/1.png">
+
+
+
+<h2 id="1-检查、开启权限"><a href="#1-检查、开启权限" class="headerlink" title="1. 检查、开启权限"></a>1. 检查、开启权限</h2><h3 id="1-1-声明权限"><a href="#1-1-声明权限" class="headerlink" title="1.1 声明权限"></a>1.1 声明权限</h3><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.BLUETOOTH"</span> /&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.BLUETOOTH_ADMIN"</span> /&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.ACCESS_COARSE_LOCATION"</span> /&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.ACCESS_FINE_LOCATION"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>android.permission.BLUETOOTH : 这个权限允许程序连接到已配对的蓝牙设备, 请求连接/接收连接/传输数据需要改权限, 主要用于对配对后进行操作;</li>
+<li>android.permission.BLUETOOTH_ADMIN : 这个权限允许程序发现和配对蓝牙设备, 该权限用来管理蓝牙设备, 有了这个权限, 应用才能使用本机的蓝牙设备, 主要用于对配对前的操作;</li>
+<li>android.permission.ACCESS_COARSE_LOCATION和android.permission.ACCESS_FINE_LOCATION：Android 6.0以后，这两个权限是必须的，蓝牙扫描周围的设备需要获取模糊的位置信息。这两个权限属于同一组危险权限，在清单文件中声明之后，还需要再运行时动态获取。</li>
+</ul>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="hljs-tag">&lt;<span class="hljs-name">uses-feature</span> <span class="hljs-attr">android:name</span>=``"<span class="hljs-attr">android.hardware.bluetooth_le</span>"` `<span class="hljs-attr">android:required</span>=``"<span class="hljs-attr">true</span>"``&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">uses-feature</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">uses-permission</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">uses-permission</span>&gt;</span>`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>android.hardware.bluetooth_le：声明此应用仅适用于具有低功耗蓝牙设备，若想适用于不支持BLE的设备，required设置为false</li>
+</ul>
+<h3 id="1-2-申请权限"><a href="#1-2-申请权限" class="headerlink" title="1.2 申请权限"></a>1.2 申请权限</h3><p>并在activity中动态申请权限（本例使用RxPermission请求权限）</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//请求定位权限</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkPermission</span><span class="hljs-params">()</span> </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">new</span> RxPermissions((Activity)mContext).request(Manifest.permission.ACCESS_COARSE_LOCATION).subscribe(<span class="hljs-keyword">new</span> Observer&lt;<span class="hljs-keyword">boolean</span>&gt;() &#123;</span><br><span class="line">		<span class="hljs-meta">@Override</span></span><br><span class="line">    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSubscribe</span><span class="hljs-params">(Disposable d)</span> </span>&#123;</span><br><span class="line">    	</span><br><span class="line">    	&#125;</span><br><span class="line"> 		</span><br><span class="line">    	<span class="hljs-meta">@Override</span></span><br><span class="line">    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onNext</span><span class="hljs-params">(Boolean granted)</span> </span>&#123;</span><br><span class="line">    		<span class="hljs-keyword">if</span> (granted) &#123;</span><br><span class="line">      		  	initBlueTooth();</span><br><span class="line">        	&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        		<span class="hljs-comment">// 未获取权限</span></span><br><span class="line">            	Toast.makeText(mContext, <span class="hljs-string">"未获取定位权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line"> </span><br><span class="line">	    <span class="hljs-meta">@Override</span></span><br><span class="line">    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onError</span><span class="hljs-params">(Throwable e)</span> </span>&#123;</span><br><span class="line"> 	</span><br><span class="line">    	&#125;</span><br><span class="line"> </span><br><span class="line">    	<span class="hljs-meta">@Override</span></span><br><span class="line">    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onComplete</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"> 	</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-搜索设备"><a href="#2-搜索设备" class="headerlink" title="2. 搜索设备"></a>2. 搜索设备</h2><p>搜索蓝牙设备是需要一个BluetoothAdapter来扫描设备的，这里又要进行设备是否支持蓝牙功能的判断和是否开启蓝牙（若未开启，提示用户或强制开启蓝牙）</p>
+<h3 id="2-1-检查是否开启蓝牙"><a href="#2-1-检查是否开启蓝牙" class="headerlink" title="2.1 检查是否开启蓝牙"></a>2.1 检查是否开启蓝牙</h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initBlueTooth</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//BluetoothAdapter代表设备自己的蓝牙适配器（蓝牙无线电）</span></span><br><span class="line">        BluetoothManager bluetoothManager =</span><br><span class="line">                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);</span><br><span class="line">        mBluetoothAdapter = bluetoothManager.getAdapter();</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//设备是否支持蓝牙</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (mBluetoothAdapter == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            Toast.makeText(mContext, <span class="hljs-string">"该设备不支持蓝牙功能"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//蓝牙是否启用，若未启用，请求用户启用</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</span><br><span class="line">            Intent enableBtIntent = <span class="hljs-keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</span><br><span class="line">            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//若开启蓝牙，直接扫描低功耗蓝牙设备；若未开启，提示用户开启，用户开启后在onActivityResult开启扫描</span></span><br><span class="line">        scanLeDevice(<span class="hljs-keyword">true</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-扫描设备"><a href="#2-2-扫描设备" class="headerlink" title="2.2 扫描设备"></a>2.2 扫描设备</h3><p><strong>注意：</strong>扫描不能一直进行，本例SCAN_PERIOD=10000毫秒后停止扫描</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 扫描低功耗蓝牙设备</span></span><br><span class="line"><span class="hljs-comment"> * 您只能扫描蓝牙LE设备或扫描经典蓝牙设备，如蓝牙中所述  您无法同时扫描Bluetooth LE和传统设备。</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> enable</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">scanLeDevice</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> enable)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (enable) &#123;</span><br><span class="line">        <span class="hljs-comment">//Because scanning is battery-intensive, you should observe the following guidelines:</span></span><br><span class="line">        <span class="hljs-comment">//As soon as you find the desired device, stop scanning.找到所需设备停止扫描</span></span><br><span class="line">        <span class="hljs-comment">//Never scan on a loop, and set a time limit on your scan.切勿扫描循环，并在扫描上加上时间限制</span></span><br><span class="line">        mHandler.postDelayed(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="hljs-meta">@Override</span></span><br><span class="line">            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">                mScanning = <span class="hljs-keyword">false</span>;</span><br><span class="line">                mBluetoothAdapter.stopLeScan(mLeScanCallback);</span><br><span class="line">                mTextView.setText(<span class="hljs-string">"扫描结束"</span>);</span><br><span class="line">                invalidateOptionsMenu();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, SCAN_PERIOD);</span><br><span class="line"> </span><br><span class="line">        mScanning = <span class="hljs-keyword">true</span>;</span><br><span class="line">        <span class="hljs-comment">//如果只想扫描特定类型的外设，则可以改为调用startLeScan（UUID []，BluetoothAdapter.LeScanCallback）</span></span><br><span class="line">        <span class="hljs-comment">//提供指定您的应用程序支持的GATT服务的UUID对象数组</span></span><br><span class="line">        mBluetoothAdapter.startLeScan(mLeScanCallback);</span><br><span class="line">        mTextView.setText(<span class="hljs-string">"扫描中..."</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        mScanning = <span class="hljs-keyword">false</span>;</span><br><span class="line">        mBluetoothAdapter.stopLeScan(mLeScanCallback);</span><br><span class="line">        mTextView.setText(<span class="hljs-string">"扫描结束"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    invalidateOptionsMenu();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>mBluetoothAdapter.startLeScan()</code>的参数<code>mLeScanCallback</code>是扫描结果的回调，其中mDeviceListAdapter为列表适配器，mDevices为列表适配器中的数据，若不进行同一设备的过滤，会返回很多相同设备。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mLeScanCallback = <span class="hljs-keyword">new</span> BluetoothAdapter.LeScanCallback() &#123;</span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLeScan</span><span class="hljs-params">(<span class="hljs-keyword">final</span> BluetoothDevice device, <span class="hljs-keyword">int</span> rssi, <span class="hljs-keyword">byte</span>[] scanRecord)</span> </span>&#123;</span><br><span class="line">    	runOnUiThread(<span class="hljs-keyword">new</span> Runnable() &#123;</span><br><span class="line">        	<span class="hljs-meta">@Override</span></span><br><span class="line">        	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        		<span class="hljs-keyword">if</span> (device != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">            	<span class="hljs-comment">// 过滤同一设备</span></span><br><span class="line">            		<span class="hljs-keyword">if</span> (!mDevices.contains(device)) &#123;</span><br><span class="line">            			<span class="hljs-comment">//将设备添加到列表中</span></span><br><span class="line">                		mDeviceListAdapter.addData(device);</span><br><span class="line">            		&#125;</span><br><span class="line">        		&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-连接BLE设备"><a href="#3-连接BLE设备" class="headerlink" title="3. 连接BLE设备"></a>3. 连接BLE设备</h2><p>本demo是基于谷歌的示例代码，就直接将谷歌连接设备的相关类拷过来了，这里直接对其分析</p>
+<p>在activity中绑定一个BluetoothLeService服务，此服务是用于对指定蓝牙设备进行连接或数据通信的服务</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent gattServiceIntent = <span class="hljs-keyword">new</span> Intent(<span class="hljs-keyword">this</span>, BluetoothLeService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
+
+<p>其中mServiceConnection管理BluetoothLeService服务的生命周期</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 管理蓝牙服务的生命周期</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ServiceConnection mServiceConnection = <span class="hljs-keyword">new</span> ServiceConnection() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onServiceConnected</span><span class="hljs-params">(ComponentName componentName, IBinder service)</span> </span>&#123;</span><br><span class="line">        mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();</span><br><span class="line">        <span class="hljs-keyword">if</span> (!mBluetoothLeService.initialize()) &#123;</span><br><span class="line">            Log.e(TAG, <span class="hljs-string">"Unable to initialize Bluetooth"</span>);</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">//成功启动初始化后自动连接到设备</span></span><br><span class="line">        mBluetoothLeService.connect(mDeviceAddress);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onServiceDisconnected</span><span class="hljs-params">(ComponentName componentName)</span> </span>&#123;</span><br><span class="line">        mBluetoothLeService = <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在连接设备之前，要判断设备是否支持低功耗蓝牙</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">initialize</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-comment">// For API level 18 and above, get a reference to BluetoothAdapter through</span></span><br><span class="line">	<span class="hljs-comment">// BluetoothManager.</span></span><br><span class="line">	<span class="hljs-keyword">if</span> (mBluetoothManager == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">	mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);</span><br><span class="line">		<span class="hljs-keyword">if</span> (mBluetoothManager == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">			Log.e(TAG, <span class="hljs-string">"Unable to initialize BluetoothManager."</span>);</span><br><span class="line">			<span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	mBluetoothAdapter = mBluetoothManager.getAdapter();</span><br><span class="line">	<span class="hljs-keyword">if</span> (mBluetoothAdapter == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">		Log.e(TAG, <span class="hljs-string">"Unable to obtain a BluetoothAdapter."</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>BluetoothLeService绑定成功后，将要连接的设备地址传入，在service中连接设备</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 连接到Bluetooth LE设备上托管的GATT服务器</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> address 设备地址</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 返回是否连接是否成功启动（注意：是启动，并不是连接结果）</span></span><br><span class="line"><span class="hljs-comment"> * 连接结果是在BluetoothGattCallback onConnectionStateChange异步返回的</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">connect</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String address)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (mBluetoothAdapter == <span class="hljs-keyword">null</span> || address == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Log.w(TAG, <span class="hljs-string">"BluetoothAdapter not initialized or unspecified address."</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-comment">// 以前连接的设备，尝试重连</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (mBluetoothDeviceAddress != <span class="hljs-keyword">null</span> &amp;&amp; address.equals(mBluetoothDeviceAddress)</span><br><span class="line">            &amp;&amp; mBluetoothGatt != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Log.d(TAG, <span class="hljs-string">"Trying to use an existing mBluetoothGatt for connection."</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span> (mBluetoothGatt.connect()) &#123;</span><br><span class="line">            mConnectionState = STATE_CONNECTING;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//通过传入的设备地址获取设备</span></span><br><span class="line">    <span class="hljs-keyword">final</span> BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);</span><br><span class="line">    <span class="hljs-keyword">if</span> (device == <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        Log.w(TAG, <span class="hljs-string">"Device not found.  Unable to connect."</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 我们要直接连接到设备，所以我们正在设置autoConnect参数为false （此处autoConnect为true可能不是立即连接）</span></span><br><span class="line">    mBluetoothGatt = device.connectGatt(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">false</span>, mGattCallback);</span><br><span class="line">    Log.d(TAG, <span class="hljs-string">"Trying to create a new connection."</span>);</span><br><span class="line">    mBluetoothDeviceAddress = address;</span><br><span class="line">    mConnectionState = STATE_CONNECTING;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中device.connectGatt（）的第三个参数mGattCallback为蓝牙设备与GATT服务端连接和数据通信的监听，此方法的返回值mBluetoothGatt 稍后介绍</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> BluetoothGattCallback mGattCallback = <span class="hljs-keyword">new</span> BluetoothGattCallback() &#123;</span><br><span class="line">	<span class="hljs-comment">//回调指示何时GATT客户端连接到远程GATT服务器/从远程GATT服务器断开连接</span></span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onConnectionStateChange</span><span class="hljs-params">(BluetoothGatt gatt, <span class="hljs-keyword">int</span> status, <span class="hljs-keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">        String intentAction;</span><br><span class="line">        <span class="hljs-comment">//连接成功</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (newState == BluetoothProfile.STATE_CONNECTED) &#123;</span><br><span class="line">            intentAction = ACTION_GATT_CONNECTED;</span><br><span class="line">			mConnectionState = STATE_CONNECTED;</span><br><span class="line">            broadcastUpdate(intentAction);</span><br><span class="line">            Log.i(TAG, <span class="hljs-string">"Connected to GATT server."</span>);</span><br><span class="line">            <span class="hljs-comment">// 连接成功后尝试发现服务</span></span><br><span class="line">            Log.i(TAG, <span class="hljs-string">"Attempting to start service discovery:"</span> +mBluetoothGatt.discoverServices());</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newState == BluetoothProfile.STATE_DISCONNECTED) &#123;</span><br><span class="line">				intentAction = ACTION_GATT_DISCONNECTED;</span><br><span class="line">                mConnectionState = STATE_DISCONNECTED;</span><br><span class="line">                Log.i(TAG, <span class="hljs-string">"Disconnected from GATT server."</span>);</span><br><span class="line">                broadcastUpdate(intentAction);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//发现新服务时调用回调</span></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onServicesDiscovered</span><span class="hljs-params">(BluetoothGatt gatt, <span class="hljs-keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (status == BluetoothGatt.GATT_SUCCESS) &#123;</span><br><span class="line">                broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                Log.w(TAG, <span class="hljs-string">"onServicesDiscovered received: "</span> + status);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//回调报告特征性读取操作的结果</span></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCharacteristicRead</span><span class="hljs-params">(BluetoothGatt gatt,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">                                         BluetoothGattCharacteristic characteristic,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">                                         <span class="hljs-keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (status == BluetoothGatt.GATT_SUCCESS) &#123;</span><br><span class="line">                broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-comment">//由于远程特征通知而触发的回调</span></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCharacteristicChanged</span><span class="hljs-params">(BluetoothGatt gatt,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">                                            BluetoothGattCharacteristic characteristic)</span> </span>&#123;</span><br><span class="line">            broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其中，连接成功、断开或发现服务或数据通信的回调均发送了广播，在activity中接收广播进行管理，这里先不关注每一个方法，尽量从一个流程分析</p>
+<p><strong>看到onConnectionStateChange回调中，判断状态为连接成功，调用了如下代码发现服务</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;mBluetoothGatt.discoverServices()&#96;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>上文中mBluetoothGatt相当于<strong>手机与设备通信的管道</strong><br>通过BluetoothGatt</p>
+<p>发现服务（discoverServices） 获取服务（getServices） 开启指定指定特征的通知（setCharacteristicNotification） 对指定特征写入数据（writeCharacteristic） 把相应地属性返回到BluetoothGattCallback</p>
+<p>Demo中发现服务后发送广播到activity中，在activity中接收广播调用service（此service为BluetoothLeService，是<strong>自己写的对指定蓝牙设备进行连接或数据通信的服务</strong>）的获取服务（此处的服务为<strong>蓝牙设备所拥有的服务</strong>BluetoothGattService）方法getServices，然后在activity中对服务进行遍历，并存储每个服务下的特征值</p>
+<p><strong>此处分析下流程：</strong>调用mBluetoothGatt.discoverServices方法后，发现服务后会回调给BluetoothGattCallback的onServicesDiscovered，在调用mBluetoothGatt.getServices()返回一个包含BluetoothGattService服务的集合，再对集合进行遍历，获取每一个BluetoothGattService服务的特征</p>
+<p><strong>注意：（这里有点绕）</strong></p>
+<p>BluetoothLeService 自己写的对指定蓝牙设备进行连接或数据通信的服务 BluetoothGattService 蓝牙设备所拥有的服务 BluetoothGattCharacteristic 某一BluetoothGattService的某一特征 BluetoothGattDescriptor 某一BluetoothGattCharacteristic下的属性，用来描述characteristic变量的属性</p>
+<p>下面这张图为BluetoothGattService 和 BluetoothGattCharacteristic 和 BluetoothGattDescriptor的关系</p>
+<p><img src="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/2.png" alt="2"></p>
+<p>遍历服务（这里尤其绕）使用了ExpandableListView展示服务和服务下的特征</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">displayGattServices</span><span class="hljs-params">(List&lt;bluetoothgattservice&gt; gattServices)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (gattServices == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;</span><br><span class="line">	String uuid = <span class="hljs-keyword">null</span>;</span><br><span class="line">	String unknownServiceString = getResources().getString(R.string.unknown_service);</span><br><span class="line">	String unknownCharaString = getResources().getString(R.string.unknown_characteristic);</span><br><span class="line">	ArrayList&lt;hashmap&lt;string, string=<span class="hljs-string">""</span>&gt;&gt; gattServiceData = <span class="hljs-keyword">new</span> ArrayList&lt;hashmap&lt;string, string=<span class="hljs-string">""</span>&gt;&gt;();</span><br><span class="line">	ArrayList&gt;&gt; gattCharacteristicData = <span class="hljs-keyword">new</span> ArrayList&gt;&gt;();</span><br><span class="line">	mGattCharacteristics = <span class="hljs-keyword">new</span> ArrayList&gt;();</span><br><span class="line"> </span><br><span class="line">	<span class="hljs-comment">//遍历所有的服务</span></span><br><span class="line">	 <span class="hljs-keyword">for</span> (BluetoothGattService gattService : gattServices) &#123;</span><br><span class="line">		<span class="hljs-comment">//每一个服务的name 和 UUID保存在map中</span></span><br><span class="line">		HashMap&lt;string, string=<span class="hljs-string">""</span>&gt; currentServiceData = <span class="hljs-keyword">new</span> HashMap&lt;string, string=<span class="hljs-string">""</span>&gt;();</span><br><span class="line">		uuid = gattService.getUuid().toString();</span><br><span class="line">		currentServiceData.put(</span><br><span class="line">		LIST_NAME, SampleGattAttributes.lookup(uuid, unknownServiceString));</span><br><span class="line">		currentServiceData.put(LIST_UUID, uuid);</span><br><span class="line">		<span class="hljs-comment">//将每一个包含服务信息的map 都添加到集合中</span></span><br><span class="line">		gattServiceData.add(currentServiceData);</span><br><span class="line"> </span><br><span class="line">		ArrayList&lt;hashmap&lt;string, string=<span class="hljs-string">""</span>&gt;&gt; gattCharacteristicGroupData =</span><br><span class="line">                    <span class="hljs-keyword">new</span> ArrayList&lt;hashmap&lt;string, string=<span class="hljs-string">""</span>&gt;&gt;();</span><br><span class="line">		List&lt;bluetoothgattcharacteristic&gt; gattCharacteristics =</span><br><span class="line">                    gattService.getCharacteristics();</span><br><span class="line">		ArrayList&lt;bluetoothgattcharacteristic&gt; charas =</span><br><span class="line">                    <span class="hljs-keyword">new</span> ArrayList&lt;bluetoothgattcharacteristic&gt;();</span><br><span class="line"> </span><br><span class="line">		<span class="hljs-comment">//遍历服务中的特征</span></span><br><span class="line">		<span class="hljs-keyword">for</span> (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) &#123;</span><br><span class="line">			<span class="hljs-comment">//将此服务中的特征添加到集合中</span></span><br><span class="line">			charas.add(gattCharacteristic);</span><br><span class="line"> </span><br><span class="line">			<span class="hljs-comment">//将此特征的UUID和name保存在map中</span></span><br><span class="line">			HashMap&lt;string, string=<span class="hljs-string">""</span>&gt; currentCharaData = <span class="hljs-keyword">new</span> HashMap&lt;string, string=<span class="hljs-string">""</span>&gt;();</span><br><span class="line">			uuid = gattCharacteristic.getUuid().toString();</span><br><span class="line">			currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));</span><br><span class="line">			currentCharaData.put(LIST_UUID, uuid);</span><br><span class="line"> </span><br><span class="line">			<span class="hljs-comment">//将每一个包含特征信息的map 都添加到集合中</span></span><br><span class="line">			gattCharacteristicGroupData.add(currentCharaData);</span><br><span class="line">		&#125;</span><br><span class="line">            <span class="hljs-comment">//将每个服务中包含的所有特征的集合添加到总集合中</span></span><br><span class="line">            mGattCharacteristics.add(charas);</span><br><span class="line">            <span class="hljs-comment">//将每个服务中包含的所有特征信息的集合添加到总集合中</span></span><br><span class="line">            gattCharacteristicData.add(gattCharacteristicGroupData);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	SimpleExpandableListAdapter gattServiceAdapter = <span class="hljs-keyword">new</span> SimpleExpandableListAdapter(</span><br><span class="line">        <span class="hljs-keyword">this</span>,gattServiceData,</span><br><span class="line">        android.R.layout.simple_expandable_list_item_2,</span><br><span class="line">        	<span class="hljs-keyword">new</span> String[]&#123;LIST_NAME, LIST_UUID&#125;,</span><br><span class="line">        	<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;android.R.id.text1,android.R.id.text2&#125;,</span><br><span class="line">        	gattCharacteristicData,</span><br><span class="line">        	android.R.layout.simple_expandable_list_item_2,</span><br><span class="line">        	<span class="hljs-keyword">new</span> String[]&#123;LIST_NAME, LIST_UUID&#125;,</span><br><span class="line">        	<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;android.R.id.text1, android.R.id.text2&#125;);</span><br><span class="line">        mGattServicesList.setAdapter(gattServiceAdapter);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码如果不太明白可以慢慢看的，先看下面的<br>我们只需要知道，点击ExpandableListView group为此设备下的所有service，点击group会展开此service下的所有特征：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ExpandableListView 子条目点击监听 点击条目，会把正在通信的特征关闭通知，再把点击条目的特征打开通知</span></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ExpandableListView.OnChildClickListener servicesListClickListener = <span class="hljs-keyword">new</span> ExpandableListView.OnChildClickListener() &#123;</span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onChildClick</span><span class="hljs-params">(ExpandableListView parent, View v, <span class="hljs-keyword">int</span> groupPosition,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">                                            <span class="hljs-keyword">int</span> childPosition, <span class="hljs-keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (mGattCharacteristics != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">			<span class="hljs-keyword">final</span> BluetoothGattCharacteristic characteristic = mGattCharacteristics.get(groupPosition).get(childPosition);</span><br><span class="line">			<span class="hljs-comment">// 正常流程</span></span><br><span class="line">			<span class="hljs-comment">// 打开指定接收特征（指定UUID）通知</span></span><br><span class="line">        	<span class="hljs-comment">// 在指定写入特征写入数据</span></span><br><span class="line">			<span class="hljs-comment">// 从指定UUID的特征打开接收（测试用）</span></span><br><span class="line">			<span class="hljs-keyword">if</span> (characteristic.getUuid().toString().equals(<span class="hljs-string">"0000ff02-0000-1000-8000-00805f9b34fb"</span>)) &#123;</span><br><span class="line">				mBluetoothLeService.setCharacteristicNotification(characteristic, <span class="hljs-keyword">true</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-comment">// 从指定UUID的特征写入（测试用）</span></span><br><span class="line">			<span class="hljs-keyword">if</span> (characteristic.getUuid().toString().equals(<span class="hljs-string">"0000ff01-0000-1000-8000-00805f9b34fb"</span>)) &#123;</span><br><span class="line">				mBluetoothLeService.write(characteristic);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>本例中<br>UUID为0000ff02-0000-1000-8000-00805f9b34fb的特征为读取特征<br>UUID为0000ff01-0000-1000-8000-00805f9b34fb的特征为写入特征</p>
+<p>点击0000ff02-0000-1000-8000-00805f9b34fb条目<strong>打开读取通知</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;mBluetoothGatt.setCharacteristicNotification(characteristic, enabled);&#96;</span><br></pre></td></tr></table></figure>
+
+<p>点击0000ff01-0000-1000-8000-00805f9b34fb条目写入数据</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//写入数据（测试用）</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(BluetoothGattCharacteristic characteristic)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//握手</span></span><br><span class="line">        characteristic.setValue(hexStringToByteArray(<span class="hljs-string">"A2"</span>));</span><br><span class="line">        mBluetoothGatt.writeCharacteristic(characteristic);</span><br><span class="line">        <span class="hljs-comment">//握手和命令不能超过4秒，但又不能马上</span></span><br><span class="line">        SystemClock.sleep(<span class="hljs-number">500</span>);</span><br><span class="line">        <span class="hljs-comment">//命令</span></span><br><span class="line">        characteristic.setValue(<span class="hljs-string">"SINSAM"</span>);</span><br><span class="line">        mBluetoothGatt.writeCharacteristic(characteristic);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>数据写入后，就会在mGattCallback的onCharacteristicRead回调里通过<code>characteristic.getValue()</code>拿到数据了</p>
+<p><img src="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/3.png" alt="3"></p>
+<p>文章</p>
+<p>作者：陈利健</p>
+<p>链接：<a href="https://www.jianshu.com/p/795bb0a08beb" target="_blank" rel="noopener">https://www.jianshu.com/p/795bb0a08beb</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/BLE%E5%BC%80%E5%8F%91/" rel="tag">BLE开发</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/20/C-STL-1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C++标准模板库STL(一)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
+                <span class="level-item">⑨Android开发-网络通信</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/';
+        this.page.identifier = '2019/02/27/BLE开发-Android程序/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#程序连接设备流程">
+        <span class="has-mr-6">1</span>
+        <span>程序连接设备流程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-检查、开启权限">
+        <span class="has-mr-6">1.1</span>
+        <span>1. 检查、开启权限</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-1-声明权限">
+        <span class="has-mr-6">1.1.1</span>
+        <span>1.1 声明权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-申请权限">
+        <span class="has-mr-6">1.1.2</span>
+        <span>1.2 申请权限</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#2-搜索设备">
+        <span class="has-mr-6">1.2</span>
+        <span>2. 搜索设备</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-检查是否开启蓝牙">
+        <span class="has-mr-6">1.2.1</span>
+        <span>2.1 检查是否开启蓝牙</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-扫描设备">
+        <span class="has-mr-6">1.2.2</span>
+        <span>2.2 扫描设备</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-连接BLE设备">
+        <span class="has-mr-6">1.3</span>
+        <span>3. 连接BLE设备</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#程序连接设备流程">
+        <span class="has-mr-6">1</span>
+        <span>程序连接设备流程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-检查、开启权限">
+        <span class="has-mr-6">1.1</span>
+        <span>1. 检查、开启权限</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-1-声明权限">
+        <span class="has-mr-6">1.1.1</span>
+        <span>1.1 声明权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-申请权限">
+        <span class="has-mr-6">1.1.2</span>
+        <span>1.2 申请权限</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#2-搜索设备">
+        <span class="has-mr-6">1.2</span>
+        <span>2. 搜索设备</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-检查是否开启蓝牙">
+        <span class="has-mr-6">1.2.1</span>
+        <span>2.1 检查是否开启蓝牙</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-扫描设备">
+        <span class="has-mr-6">1.2.2</span>
+        <span>2.2 扫描设备</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-连接BLE设备">
+        <span class="has-mr-6">1.3</span>
+        <span>3. 连接BLE设备</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="BLE开发-Android程序" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

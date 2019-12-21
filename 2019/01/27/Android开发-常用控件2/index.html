@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>③Android开发-常用控件（二） - Hexo</title>
+
+
+    <meta name="description" content="EditText | ImageView | 综合实例：登录界面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="③Android开发-常用控件（二）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;27&#x2F;Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="EditText | ImageView | 综合实例：登录界面">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-01-27T05:25:10.000Z">
+<meta property="article:modified_time" content="2019-12-21T07:07:36.602Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="③Android开发-常用控件（二）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-27T05:25:10.000Z">2019-01-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1802 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ③Android开发-常用控件（二）
+            
+        </h1>
+        <div class="content">
+            <center>EditText | ImageView | 综合实例：登录界面</center>
+<a id="more"></a>
+
+<h2 id="4-EditText"><a href="#4-EditText" class="headerlink" title="4. EditText"></a>4. EditText</h2><p><strong>概念</strong>：用来输入文本的控件，被称为文本输入框，TextView是EditText的父类,因而可以使用其所有属性。</p>
+<p><strong>常用属性</strong>：</p>
+<p><strong>text</strong>：显示的内容        <strong>textSize</strong>：文字的大小            <strong>textColor</strong>：文字的颜色</p>
+<p><strong>visibility</strong>：是否显示    <strong>maxLength</strong>：显示的最大长度    <strong>maxLines</strong>：显示的最大行数</p>
+<p><strong>hint</strong>：输入提示，有输入后不再显示提示内容</p>
+<p><strong>inputType</strong>：限制输入类型，如<code>number</code>、<code>textPassword</code>(密文输入)</p>
+<p><strong>ems</strong>：默认EditText的输入框宽度，若EditText宽度为<code>match_parent</code>，则ems属性失效</p>
+<h3 id="实例1：EditText实现明密文切换"><a href="#实例1：EditText实现明密文切换" class="headerlink" title="实例1：EditText实现明密文切换"></a>实例1：EditText实现明密文切换</h3><p>EditText呈现文字显示的时候如果需要进行明密文切换，需要给EditText设置对应的<code>TransformationMethod</code>，给定需要转化的类型就可以实现明密文切换。注意切换完成之后的光标位置，以免出现输入密码错误。</p>
+<p>放置控件：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/input"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:singleLine</span>=<span class="hljs-string">"true"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:hint</span>=<span class="hljs-string">"请输入密码"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:inputType</span>=<span class="hljs-string">"textPassword"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">CheckBox</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/box"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_alignParentRight</span>=<span class="hljs-string">"true"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_below</span>=<span class="hljs-string">"@+id/input"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:text</span>=<span class="hljs-string">"查看密码"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Java代码实现：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">private</span> EditText input;</span><br><span class="line">	<span class="hljs-keyword">private</span> CheckBox box;</span><br><span class="line">	</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="hljs-comment">//初始化</span></span><br><span class="line">        input = (EditText) findViewById(R.id.input);</span><br><span class="line">        input.setCursorVisible(<span class="hljs-keyword">false</span>);	<span class="hljs-comment">//设置输入光标隐藏</span></span><br><span class="line">        box = (CheckBox) findViewById(R.id.box);</span><br><span class="line">        box.setOnCheckedChangeListener(<span class="hljs-keyword">new</span> OnCheckedChangeListener() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="hljs-meta">@Override</span></span><br><span class="line">			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCheckedChanged</span><span class="hljs-params">(CompoundButton buttonView, <span class="hljs-keyword">boolean</span> isChecked)</span> </span>&#123;</span><br><span class="line">				<span class="hljs-keyword">if</span> (isChecked) &#123;</span><br><span class="line">					<span class="hljs-comment">//选中，显示明文</span></span><br><span class="line">					input.setTransformationMethod(HideReturnsTransformationMethod.getInstance());</span><br><span class="line">				&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">					<span class="hljs-comment">//未选中，显示密文</span></span><br><span class="line">					input.setTransformationMethod(PasswordTransformationMethod.getInstance());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="hljs-comment">//将光标移动到密码末尾</span></span><br><span class="line">				input.setSelection(input.getText().length());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例2：EditText添加内容发生变化的监听"><a href="#实例2：EditText添加内容发生变化的监听" class="headerlink" title="实例2：EditText添加内容发生变化的监听"></a>实例2：EditText添加内容发生变化的监听</h3><p>如果在文本进行输入的过程中，需要针对文本的输入进行监听，就需要用到TextWatcher进行监听。该建监听会回调该类下的三个方法：<code>onTextChanged</code>    <code>beforeTextChanged</code>    <code>afterTextChanged</code></p>
+<p>参数说明：</p>
+<p>onTextChanged：文本发生变化的时候执行的方法</p>
+<blockquote>
+<p>s：表示改变之前的的内容，通常start和count组合，可以在s中读取本次改变字段中被改变的内容，而after表示改变之后的内容的数量</p>
+<p>start：开始的位置</p>
+<p>before：改变之前的数量</p>
+<p>count：表示新增加的数量</p>
+</blockquote>
+<p>beforeTextChanged：文本发生变化之前执行的方法</p>
+<blockquote>
+<p>s：表示改变之前的的内</p>
+<p>start：开始的位置</p>
+<p>count：被改变的原有内容的个数</p>
+<p>after：改变之后的内容数量</p>
+</blockquote>
+<p>afterTextChanged：文本发生变化之后执行的方法</p>
+<blockquote>
+<p>s：表示最终的内容</p>
+</blockquote>
+<p>测试代码：</p>
+<img src="/2019/01/27/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62/1.png">
+
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">input = (EditText) findViewById(R.id.myinput);</span><br><span class="line"><span class="hljs-comment">// 针对EditText的输入进行监听</span></span><br><span class="line">input.addTextChangedListener(<span class="hljs-keyword">new</span> TextWatcher() &#123;</span><br><span class="line">		<span class="hljs-meta">@Override</span></span><br><span class="line">		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTextChanged</span><span class="hljs-params">(CharSequence s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> before, <span class="hljs-keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">			<span class="hljs-comment">// 文本发生变化的时候执行的方法</span></span><br><span class="line">			Log.i(<span class="hljs-string">"TAG"</span>, <span class="hljs-string">"onTextChange方法被调用,s:"</span>+s+<span class="hljs-string">"-start:"</span>+start+<span class="hljs-string">"-before:"</span>+before+<span class="hljs-string">"-count:"</span>+count);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="hljs-meta">@Override</span></span><br><span class="line">		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeTextChanged</span><span class="hljs-params">(CharSequence s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> count,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">				<span class="hljs-keyword">int</span> after)</span> </span>&#123;</span><br><span class="line">			<span class="hljs-comment">// 文本发生变化之后执行的方法</span></span><br><span class="line">			Log.i(<span class="hljs-string">"TAG"</span>, <span class="hljs-string">"beforeTextChanged方法被调用,s:"</span>+s+<span class="hljs-string">"-start:"</span>+start+<span class="hljs-string">"-count:"</span>+count);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="hljs-meta">@Override</span></span><br><span class="line">		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterTextChanged</span><span class="hljs-params">(Editable s)</span> </span>&#123;</span><br><span class="line">			<span class="hljs-comment">// 文本发生变化之后执行的方法</span></span><br><span class="line">			Log.i(<span class="hljs-string">"TAG"</span>, <span class="hljs-string">"afterTextChanged方法被调用,s:"</span>+s);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/myinput"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:singleLine</span>=<span class="hljs-string">"true"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"50dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:hint</span>=<span class="hljs-string">"请输入"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">private</span> EditText input;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		<span class="hljs-comment">// 初始化</span></span><br><span class="line">		input = (EditText) findViewById(R.id.myinput);</span><br><span class="line">		<span class="hljs-comment">// 针对EditText的输入进行监听</span></span><br><span class="line">		input.addTextChangedListener(<span class="hljs-keyword">new</span> TextWatcher() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="hljs-meta">@Override</span></span><br><span class="line">			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTextChanged</span><span class="hljs-params">(CharSequence s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> before, <span class="hljs-keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="hljs-meta">@Override</span></span><br><span class="line">			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeTextChanged</span><span class="hljs-params">(CharSequence s, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> count,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">					<span class="hljs-keyword">int</span> after)</span> </span>&#123;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="hljs-meta">@Override</span></span><br><span class="line">			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterTextChanged</span><span class="hljs-params">(Editable s)</span> </span>&#123;</span><br><span class="line">				<span class="hljs-comment">// 文本发生变化之后执行的方法</span></span><br><span class="line">				<span class="hljs-keyword">if</span> (s.length()==<span class="hljs-number">11</span>) &#123;</span><br><span class="line">					Toast.makeText(MainActivity.<span class="hljs-keyword">this</span>, <span class="hljs-string">"输入格式正确"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-ImageView"><a href="#5-ImageView" class="headerlink" title="5. ImageView"></a>5. ImageView</h2><p><strong>概念</strong>：用来显示图片的控件</p>
+<p><strong>基本属性</strong>：</p>
+<p><strong>src</strong>：指定当前ImageView中填充的<strong>内容</strong>，如果是PNG格式等有透明属性的图片的话，就会在透明的地方显示出background的背景，而不是黑色或者其他系统默认的填充色等。</p>
+<p><strong>background</strong>：指定当前控件的<strong>背景</strong>，src浮在background上方。</p>
+<p>如果需要在代码中动态设定当前ImageView的填充内容，可以使用<code>setImageResource</code>进行指定。ImageView也可以通过<code>setOnClickListener</code>设置监听。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ImageView监听</span></span><br><span class="line">image = (ImageView) findViewById(R.id.image);</span><br><span class="line">image.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">			</span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;</span><br><span class="line">		Toast.makeText(MainActivity.<span class="hljs-keyword">this</span>, <span class="hljs-string">"点击了Image"</span>, Toast.LENGTH_SHORT).show();	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>scaleType</strong>：用来处理图片放在ImageView上显示的样子、如何进行缩放以及是显示图片的整体还是部分等。</p>
+<ol>
+<li><p>使用方法：</p>
+<ol>
+<li>在布局文件中，设置ImageView的属性<code>scaleType=“XXX”</code></li>
+<li>在java文件中使用<code>imageview.setScaleType=“XXX”</code></li>
+</ol>
+</li>
+<li><p>ScaleType 的常用取值</p>
+<ol>
+<li><p>matrix 用矩阵来绘制（从左上角开始的矩阵区域）</p>
+</li>
+<li><p>fitXY 把图片<strong>不按照比例</strong>的扩大、缩小到View的宽度，显示在view的上部分位置，确保图片完整呈现并充满view。</p>
+</li>
+<li><p>fitStart 把图片<strong>按照比例</strong>扩大、缩小到view的宽度，显示到view的上部分位置，确保图片完整呈现。</p>
+</li>
+<li><p>fitCenter 把图片<strong>按照比例</strong>扩大、缩小到view的宽度，显示到view的居中位置，确保图片完整呈现。</p>
+</li>
+<li><p>fitEnd 把图片<strong>按照比例</strong>扩大、缩小到view的宽度，显示到view的下部分位置，确保图片完整呈现。</p>
+</li>
+<li><p>center 按图片原来的大小居中显示，若宽度超过View截取居中部分显示；当小于View范围，居中显示。</p>
+</li>
+<li><p>centerCrop <strong>按比例</strong>扩大、缩小图片居中显示并充满View。</p>
+</li>
+<li><p>centerInside 将图片的内容完整的居中显示，若宽度超过View按比例缩小显示；当小于View范围，居中显示</p>
+</li>
+</ol>
+</li>
+</ol>
+<img src="/2019/01/27/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62/2.png">
+
+
+
+<p>（控件）<strong>ImageButton</strong>：用来相应图片的点击事件。</p>
+<p>区别：一般用ImageButton来相应点击效果，用ImageView来呈现一个图片控件。ImageButton是ImageView的子类。</p>
+<h3 id="实例3：图片切换选择器"><a href="#实例3：图片切换选择器" class="headerlink" title="实例3：图片切换选择器"></a>实例3：图片切换选择器</h3><p>在Java代码中如果需要对Image设置不同的显示，通过api—setImageResource</p>
+<img src="/2019/01/27/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62/3.gif">
+
+<p>完整代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ImageView</span> </span></span><br><span class="line"><span class="hljs-tag">	<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/image"</span></span></span><br><span class="line"><span class="hljs-tag"> 	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"0dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span></span></span><br><span class="line"><span class="hljs-tag">   	<span class="hljs-attr">android:src</span>=<span class="hljs-string">"@drawable/im"</span>/&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span></span><br><span class="line"><span class="hljs-tag">	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/pre"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/pre"</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">View</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"0dp"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"1px"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span>/&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/next"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/next"</span>/&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">OnClickListener</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">private</span> ImageView image;</span><br><span class="line">	<span class="hljs-keyword">private</span> Button pre,next;</span><br><span class="line">	<span class="hljs-comment">//图片在R文件中呈现的id值组成的int类型的数值</span></span><br><span class="line">	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] images= &#123;R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f&#125;;</span><br><span class="line">    <span class="hljs-comment">//表示选中图片的索引位置</span></span><br><span class="line">	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		<span class="hljs-comment">//初始化</span></span><br><span class="line">		image = (ImageView) findViewById(R.id.image);</span><br><span class="line">		pre = (Button) findViewById(R.id.pre);</span><br><span class="line">		next = (Button) findViewById(R.id.next);</span><br><span class="line">		<span class="hljs-comment">//设置按钮的点击监听</span></span><br><span class="line">		pre.setOnClickListener(<span class="hljs-keyword">this</span>);</span><br><span class="line">		next.setOnClickListener(<span class="hljs-keyword">this</span>);		</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="hljs-meta">@Override</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">switch</span> (v.getId()) &#123;</span><br><span class="line">		<span class="hljs-keyword">case</span> R.id.pre:</span><br><span class="line">			<span class="hljs-comment">//点击了上一张</span></span><br><span class="line">			position--;</span><br><span class="line">			<span class="hljs-keyword">if</span> (position&lt;<span class="hljs-number">0</span>) &#123;</span><br><span class="line">				position = images.length-<span class="hljs-number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			image.setImageResource(images[position]);</span><br><span class="line">			<span class="hljs-keyword">break</span>;</span><br><span class="line">		<span class="hljs-keyword">case</span> R.id.next:</span><br><span class="line">			<span class="hljs-comment">//点击了下一张</span></span><br><span class="line">			position++;</span><br><span class="line">			<span class="hljs-keyword">if</span>(position&gt;=images.length)&#123;</span><br><span class="line">				position = <span class="hljs-number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			image.setImageResource(images[position]);</span><br><span class="line">			<span class="hljs-keyword">break</span>;</span><br><span class="line">		<span class="hljs-keyword">default</span>:</span><br><span class="line">			<span class="hljs-keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="综合实例：登陆页面"><a href="#综合实例：登陆页面" class="headerlink" title="综合实例：登陆页面"></a>综合实例：登陆页面</h2><ul>
+<li>实现效果：</li>
+</ul>
+<img src="/2019/01/27/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62/3.png">
+
+<ul>
+<li>布局代码</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"vertical"</span> </span></span><br><span class="line"><span class="hljs-tag">	<span class="hljs-attr">android:background</span>=<span class="hljs-string">"@drawable/background"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:paddingBottom</span>=<span class="hljs-string">"@dimen/activity_vertical_margin"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:paddingLeft</span>=<span class="hljs-string">"@dimen/activity_horizontal_margin"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:paddingRight</span>=<span class="hljs-string">"@dimen/activity_horizontal_margin"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:paddingTop</span>=<span class="hljs-string">"@dimen/activity_vertical_margin"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">"com.str.register.MainActivity"</span> &gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"85dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"25sp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:padding</span>=<span class="hljs-string">"5dp"</span></span></span><br><span class="line"><span class="hljs-tag">       	 	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/register"</span>/&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginLeft</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginRight</span>=<span class="hljs-string">"35dp"</span>&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/user"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_alignBaseline</span>=<span class="hljs-string">"@+id/username"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/username"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/username"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_toRightOf</span>=<span class="hljs-string">"@+id/user"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:hint</span>=<span class="hljs-string">"@string/usernamehint"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/pass"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_alignBaseline</span>=<span class="hljs-string">"@+id/password"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:layout_below</span>=<span class="hljs-string">"@+id/username"</span></span></span><br><span class="line"><span class="hljs-tag">        		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/password"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> </span></span><br><span class="line"><span class="hljs-tag">           	 	<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@id/password"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:hint</span>=<span class="hljs-string">"@string/passwordhint"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_toRightOf</span>=<span class="hljs-string">"@+id/pass"</span></span></span><br><span class="line"><span class="hljs-tag">				<span class="hljs-attr">android:layout_below</span>=<span class="hljs-string">"@+id/username"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_alignLeft</span>=<span class="hljs-string">"@+id/username"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:inputType</span>=<span class="hljs-string">"textPassword"</span>/&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginLeft</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginRight</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center_vertical"</span>&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/sex"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"horizontal"</span>&gt;</span></span><br><span class="line">            	<span class="hljs-tag">&lt;<span class="hljs-name">RadioButton</span> </span></span><br><span class="line"><span class="hljs-tag">                	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span> </span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/male"</span>/&gt;</span></span><br><span class="line">            	<span class="hljs-tag">&lt;<span class="hljs-name">RadioButton</span> </span></span><br><span class="line"><span class="hljs-tag">                	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">            		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/famale"</span>/&gt;</span>            </span><br><span class="line">        	<span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginLeft</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginRight</span>=<span class="hljs-string">"35dp"</span>&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"18sp"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/hobby"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">CheckBox</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/dance"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/dance"</span>/&gt;</span></span><br><span class="line">        	<span class="hljs-tag">&lt;<span class="hljs-name">CheckBox</span> </span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/sing"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span></span></span><br><span class="line"><span class="hljs-tag">            	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/sing"</span>/&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:background</span>=<span class="hljs-string">"#50bbf3"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginLeft</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:layout_marginRight</span>=<span class="hljs-string">"35dp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"15sp"</span></span></span><br><span class="line"><span class="hljs-tag">        	<span class="hljs-attr">android:text</span>=<span class="hljs-string">"@string/registerbuton"</span>/&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Android UI开发分类</p>
+<ol>
+<li>界面布局开发——定义界面的布局</li>
+<li>控件开发——定义单个界面元素</li>
+<li>AdapterView与Adapter开发——列表显示（适配器的开发）</li>
+<li>UI组件开发——对话框、通知、菜单等</li>
+<li>自定义View、图形图像和动画——通过代码，自行绘制界面。</li>
+</ol>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android%E5%BC%80%E5%8F%91/" rel="tag">Android开发</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/28/Android%E5%BC%80%E5%8F%91-%E9%80%82%E9%85%8D%E5%99%A8/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">④Android开发-适配器（一）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/26/%E5%BA%8F-INTRO/">
+                <span class="level-item">序/INTRO</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/01/27/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B62/';
+        this.page.identifier = '2019/01/27/Android开发-常用控件2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#4-EditText">
+        <span class="has-mr-6">1</span>
+        <span>4. EditText</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实例1：EditText实现明密文切换">
+        <span class="has-mr-6">1.1</span>
+        <span>实例1：EditText实现明密文切换</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例2：EditText添加内容发生变化的监听">
+        <span class="has-mr-6">1.2</span>
+        <span>实例2：EditText添加内容发生变化的监听</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-ImageView">
+        <span class="has-mr-6">2</span>
+        <span>5. ImageView</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实例3：图片切换选择器">
+        <span class="has-mr-6">2.1</span>
+        <span>实例3：图片切换选择器</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#综合实例：登陆页面">
+        <span class="has-mr-6">3</span>
+        <span>综合实例：登陆页面</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#4-EditText">
+        <span class="has-mr-6">1</span>
+        <span>4. EditText</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实例1：EditText实现明密文切换">
+        <span class="has-mr-6">1.1</span>
+        <span>实例1：EditText实现明密文切换</span>
+        </a></li><li>
+        <a class="is-flex" href="#实例2：EditText添加内容发生变化的监听">
+        <span class="has-mr-6">1.2</span>
+        <span>实例2：EditText添加内容发生变化的监听</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-ImageView">
+        <span class="has-mr-6">2</span>
+        <span>5. ImageView</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实例3：图片切换选择器">
+        <span class="has-mr-6">2.1</span>
+        <span>实例3：图片切换选择器</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#综合实例：登陆页面">
+        <span class="has-mr-6">3</span>
+        <span>综合实例：登陆页面</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="③Android开发-常用控件（二）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

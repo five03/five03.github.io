@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C++标准模板库STL(二) - Hexo</title>
+
+
+    <meta name="description" content="STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++标准模板库STL(二)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;C-STL-2&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-12-20T13:40:07.000Z">
+<meta property="article:modified_time" content="2019-12-21T05:12:51.727Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="C++标准模板库STL(二)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 分钟 读完 (大约 2861 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C++标准模板库STL(二)
+            
+        </h1>
+        <div class="content">
+            <p>STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分，因此不用安装额外的库文件。</p>
+<a id="more"></a>
+
+<h1 id="C-set"><a href="#C-set" class="headerlink" title="C++ set"></a>C++ set</h1><p>set翻译为集合，是一个<strong>内部自动有序</strong>且<strong>不含重复元素</strong>的容器。在考试中有可能出现需要去掉重复元素的情况，而且有可能因这些元素比较大或者类型不是int而不能直接开散列表，在这种情况下可以用set来保留元素本身而不考虑它的个数。当然上面所说的情况也可以通过再开一个数组进行下标和元素的对应来解决，但是set提供了更为直观的接口，并且可以实现自动排序。</p>
+<p>使用set需要引入set头文件<code>#include &lt;set&gt;</code>。还需要在头文件下加一加<code>using namespace std；</code></p>
+<h2 id="set-的定义"><a href="#set-的定义" class="headerlink" title="set 的定义"></a>set 的定义</h2><p>单独定义一个set</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">typename</span>&gt; <span class="hljs-built_in">set</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其定义与vector是基本一样的，或者说大部分的STL都是这样定义的，这里的typename依然可以是任何基本类型、结构体、STL标准容器等。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; name;</span><br><span class="line"><span class="hljs-built_in">set</span>&lt;node&gt; name; <span class="hljs-comment">// 结构体</span></span><br><span class="line"><span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; name; <span class="hljs-comment">// 记得加空格</span></span><br></pre></td></tr></table></figure>
+
+<p>数组定义与vector相同</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
+
+<h2 id="set-容器元素的访问"><a href="#set-容器元素的访问" class="headerlink" title="set 容器元素的访问"></a>set 容器元素的访问</h2><p>set只能通过迭代器（iterator）访问：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<p>由于除了vector和string之外的STL容器都不支持<code>*(it+i)</code>的方式访问，因此只能按照以下方式枚举：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; st;</span><br><span class="line">    st.insert(<span class="hljs-number">3</span>); <span class="hljs-comment">// insert(x) -- 将x插入set中</span></span><br><span class="line">    st.insert(<span class="hljs-number">5</span>);</span><br><span class="line">    st.insert(<span class="hljs-number">2</span>);</span><br><span class="line">    st.insert(<span class="hljs-number">3</span>);</span><br><span class="line">    <span class="hljs-comment">// 注：不支持it &lt; st.end()的写法</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = st.<span class="hljs-built_in">begin</span>(); it != st.<span class="hljs-built_in">end</span>(); it++)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, *it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 3 5</span><br></pre></td></tr></table></figure>
+
+<p>可以发现set内元素自动排序并且去掉了重复元素。</p>
+<h2 id="set-常用函数实例解析"><a href="#set-常用函数实例解析" class="headerlink" title="set 常用函数实例解析"></a>set 常用函数实例解析</h2><ol>
+<li><p>insert()</p>
+<p>可以将x插入set容器中，并自动递增排序和去重，时间复杂度O(logN)。</p>
+</li>
+<li><p>find()</p>
+<p>返回set中对于值为value的迭代器，时间复杂度为O(logN)</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; st;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">3</span>; i++)&#123;</span><br><span class="line">        st.insert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = st.<span class="hljs-built_in">find</span>(<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,*it);</span><br><span class="line">    <span class="hljs-comment">// 也可以写成 printf("%d",*(st.find(2)));</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>erase()</p>
+<p>有两个用法</p>
+<ul>
+<li><p>删除单个元素</p>
+<ul>
+<li>st.erase(it)，it为所需要删除元素的迭代器，时间复杂度为O(1)，可以结合find()函数使用.</li>
+<li>st.erase(value)，value为所需要删除元素的值，时间复杂度为O(logN)。</li>
+</ul>
+</li>
+<li><p>删除一个区间内所有的元素</p>
+<p>erase(first,last)，可以删除(first,last]直接的元素，时间复杂度为O(first-last)</p>
+</li>
+</ul>
+</li>
+<li><p>size()</p>
+<p>获取set容器内元素的个数，时间复杂度为O(1)。</p>
+</li>
+<li><p>clear()</p>
+<p>清空set内所有的元素，时间复杂度为O(N)。</p>
+</li>
+</ol>
+<h2 id="set-的常见用途"><a href="#set-的常见用途" class="headerlink" title="set 的常见用途"></a>set 的常见用途</h2><p>set的最主要用途是自动去重并按照升序排序</p>
+<p><strong>延伸：</strong>set中元素是惟一的，如果需要处理不唯一的情况，则需要使用multiset。另外，C++ 11标志中还增加了unordered_set，以散列表set内部的红黑树（Red Black Tree，一种自平衡二叉查找树）实现，使其可以用来处理只去重但不排序的需求，速度比set要快很多。</p>
+<h1 id="C-queue"><a href="#C-queue" class="headerlink" title="C++ queue"></a>C++ queue</h1><p>queue翻译为队列，在STL中主要实现了先进先出的容器。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="queue定义"><a href="#queue定义" class="headerlink" title="queue定义"></a>queue定义</h2><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="queue容器内元素的访问"><a href="#queue容器内元素的访问" class="headerlink" title="queue容器内元素的访问"></a>queue容器内元素的访问</h2><p>由于队列本身就是一种先进先出的限制性数据结构，因此在STL中只能<strong>通过front来访问队首元素，或者是通过back()来访问队尾元素</strong>。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++)&#123;</span><br><span class="line">        q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d"</span>,q.front(),q.back());</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用函数解析"><a href="#常用函数解析" class="headerlink" title="常用函数解析"></a>常用函数解析</h2><ol>
+<li><p>push()</p>
+<p>push(x)将x进行入队。</p>
+</li>
+<li><p>front() back()</p>
+<p>获得队首 队尾元素</p>
+</li>
+<li><p>pop()</p>
+<p>令队首元素出队</p>
+</li>
+<li><p>empty()</p>
+<p>监测queue是否为空，返回true-空，false-非空</p>
+</li>
+<li><p>size()</p>
+<p>返回queue内元素个数。</p>
+</li>
+</ol>
+<h2 id="queue-常见用途"><a href="#queue-常见用途" class="headerlink" title="queue 常见用途"></a>queue 常见用途</h2><p>需要实现广度优先搜索时，可以不用自己手动实现一个队列，而是用queue作为代替。</p>
+<p><strong>注：</strong>使用front()和pop()前，必须用empty()判断队列是否为空，否则可能因为队空而出现错误。</p>
+<p><strong>延伸：</strong>STL容器中还有两种容器与队列有关，分别是双端队列（deque）和优先队列（priority_queue），前者是首位皆可插入和删除队列，后者是使用堆实现的默认将当前队列最大元素置于队首。</p>
+<h1 id="priority-queue-优先队列"><a href="#priority-queue-优先队列" class="headerlink" title="priority_queue 优先队列"></a>priority_queue 优先队列</h1><p>priority_queue又称为优先队列，其底层是利用堆来进行实现的。在优先队列中，队首元素一定是当前队列中优先级别最高的一个，例如：</p>
+<blockquote>
+<p>桃子（4）</p>
+<p>香蕉（3）</p>
+<p>苹果（1）</p>
+</blockquote>
+<p>出队顺序为桃子–&gt;香蕉–&gt;苹果，这里的优先级是规定出来的，也可以数字越小优先级越大。</p>
+<h2 id="priority-queue-的定义"><a href="#priority-queue-的定义" class="headerlink" title="priority_queue 的定义"></a>priority_queue 的定义</h2><p>要用优先队列必须：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br></pre></td></tr></table></figure>
+
+<p>定义方法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="hljs-keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="priority-queue-容器内元素的访问"><a href="#priority-queue-容器内元素的访问" class="headerlink" title="priority_queue 容器内元素的访问"></a>priority_queue 容器内元素的访问</h2><p>和队列不一样的是，优先队列没有front()函数与back()函数，而只能通过top()函数来访问队首元素（也可以称为堆顶元素）也就是优先级最高的元素。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line">    q.push(<span class="hljs-number">5</span>);</span><br><span class="line">    q.push(<span class="hljs-number">7</span>);</span><br><span class="line">    q.push(<span class="hljs-number">16</span>);</span><br><span class="line">    <span class="hljs-keyword">if</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,q.top());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="priority-queue-常用函数实例解析"><a href="#priority-queue-常用函数实例解析" class="headerlink" title="priority_queue 常用函数实例解析"></a>priority_queue 常用函数实例解析</h2><ol>
+<li><p>push()</p>
+<p>将令x入队</p>
+</li>
+<li><p>top()</p>
+<p>可以访问队首元素（即堆顶元素）</p>
+</li>
+<li><p>pop()</p>
+<p>令队首元素（即堆顶元素）出队</p>
+</li>
+<li><p>empty()</p>
+<p>检测优先队列是否为空，true–空，false–非空</p>
+</li>
+<li><p>size()</p>
+<p>返回优先队列内元素个数</p>
+</li>
+</ol>
+<h2 id="priority-queue-内元素优先级设置"><a href="#priority-queue-内元素优先级设置" class="headerlink" title="priority_queue 内元素优先级设置"></a>priority_queue 内元素优先级设置</h2><p>如何定义优先队列内元素的优先级是运用好优先队列的关键，优先级设置方法如下：</p>
+<ol>
+<li><p>基本数据类型的优先级设置</p>
+<p>基本数据类型即int型、double型、char型等，优先队列对他们的优先级设置一般是数字大的优先级越高（char型是字典序越大的）,如下两种优先队列的定义是等价的：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line">priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;,less&lt;<span class="hljs-keyword">int</span>&gt; &gt; q;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，第二种定义方式的尖括号内多出了两个参数：一个是vector&lt;int&gt;，是承载底层数据结构堆（heap）的容器，另一个是less&lt;int&gt;，是对第一个参数的比较类，less&lt;int&gt;表示数字越大优先级越大，而greater&lt;int&gt;表示数字越小优先级越大。</p>
+<p>因此要想让优先队列总是把最小的元素放在队首，只需要进行如下定义：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt; &gt; q;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt; &gt; q;</span><br><span class="line">    q.push(<span class="hljs-number">5</span>);</span><br><span class="line">    q.push(<span class="hljs-number">7</span>);</span><br><span class="line">    q.push(<span class="hljs-number">16</span>);</span><br><span class="line">    <span class="hljs-keyword">if</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,q.top());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构体的优先级设置</p>
+<p>本节开头举了一个水果的例子，可以对水果名称和价格建立一个结构体，如下：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span>&#123;</span></span><br><span class="line">  <span class="hljs-built_in">string</span> name;</span><br><span class="line">  <span class="hljs-keyword">int</span> price;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在希望按水果的价格的高为优先级高，就需要重载（overload）小于号“&lt;”。重载是指对已有的运算符进行重新定义，也就是说，可以改变小于号的功能：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span>&#123;</span></span><br><span class="line">  <span class="hljs-built_in">string</span> name;</span><br><span class="line">  <span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (fruit f1, friut f2)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> fi.price &lt; f2.price;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由此，friend结构体中增加了一个函数，其中<code>friend</code>为有元，后面的<code>bool operator&lt;(fruit f1, friut f2&gt;)</code>对fruit类型的操作符“&lt;”进行重载（重载大于号会编译错误，因为从数学上来说，只需要重载小于号，即f1&gt;f2等价于判断f2&lt;f1，而f1==f2等价于判断!(f1&lt;f2)&amp;&amp;!(f2&lt;f1）），函数部分<code>return f1.price &lt; f2.price</code>，因此重载后小于号还是小于号的作用。此次就可以直接定义fruit优先队列：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;fruit&gt; q;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要以价格低的水果为优先级高：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span>&#123;</span></span><br><span class="line">    <span class="hljs-built_in">string</span> name;</span><br><span class="line">    <span class="hljs-keyword">int</span> price;</span><br><span class="line">    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (fruit f1, fruit f2)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> f1.price &gt; f2.price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    fruit f1, f2, f3;</span><br><span class="line">    priority_queue&lt;fruit&gt; q;</span><br><span class="line">    f1.name = <span class="hljs-string">"香蕉"</span>;</span><br><span class="line">    f1.price = <span class="hljs-number">3</span>;</span><br><span class="line">    f2.name = <span class="hljs-string">"猕猴桃"</span>;</span><br><span class="line">    f2.price = <span class="hljs-number">4</span>;</span><br><span class="line">    f3.name = <span class="hljs-string">"葡萄"</span>;</span><br><span class="line">    f3.price = <span class="hljs-number">6</span>;</span><br><span class="line">    q.push(f1);</span><br><span class="line">    q.push(f2);</span><br><span class="line">    q.push(f3);</span><br><span class="line">    <span class="hljs-keyword">if</span>(!q.empty())&#123;</span><br><span class="line">        fruit p = q.top();</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; p.name &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; p.price &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优先队列的这个函数与sort中的cmp的效果是相反的</strong>，也可以和cmp函数一样写在外面，需要把friend去掉，把小于号改成一对小括号，然后把重写函数写在结构体外面，同时将其用struct包装起来：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span>&#123;</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(fruit f1, fruit f2)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> f1.price &gt; f2.price;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时可以通过：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;fruit, <span class="hljs-built_in">vector</span>&lt;fruit&gt;, cmp &gt;q;</span><br></pre></td></tr></table></figure>
+
+<p>来实现，例如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line">   </span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span>&#123;</span></span><br><span class="line">    <span class="hljs-built_in">string</span> name;</span><br><span class="line">    <span class="hljs-keyword">int</span> price;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span>&#123;</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(fruit f1, fruit f2)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> f1.price &gt; f2.price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">   </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    fruit f1, f2, f3;</span><br><span class="line">    <span class="hljs-comment">// priority_queue&lt;fruit&gt; q;</span></span><br><span class="line">    priority_queue&lt;fruit, <span class="hljs-built_in">vector</span>&lt;fruit&gt;, cmp&gt; q;</span><br><span class="line">    f1.name = <span class="hljs-string">"香蕉"</span>;</span><br><span class="line">    f1.price = <span class="hljs-number">3</span>;</span><br><span class="line">    f2.name = <span class="hljs-string">"猕猴桃"</span>;</span><br><span class="line">    f2.price = <span class="hljs-number">4</span>;</span><br><span class="line">    f3.name = <span class="hljs-string">"葡萄"</span>;</span><br><span class="line">    f3.price = <span class="hljs-number">6</span>;</span><br><span class="line">    q.push(f1);</span><br><span class="line">    q.push(f2);</span><br><span class="line">    q.push(f3);</span><br><span class="line">    <span class="hljs-keyword">if</span>(!q.empty())&#123;</span><br><span class="line">        fruit p = q.top();</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; p.name &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; p.price &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>同理，基本数据类型或者其他是STL容器（例如set），也可以使用这样的方式来定义优先级。</strong></p>
+<p>如果结构体的数据比较庞大（例如出现了字符串或数组），建议使用引用来提高效率，此时比较类的参数中需要加上<code>const</code>和<code>&amp;</code></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> fruit &amp;f1, <span class="hljs-keyword">const</span> fruit &amp;f2)&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> f1.price &gt; f2. price;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> fruit &amp;f1, <span class="hljs-keyword">const</span> fruit &amp;f2)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> f1.price &gt; f2.price;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="priority-queue-的常见用途"><a href="#priority-queue-的常见用途" class="headerlink" title="priority_queue 的常见用途"></a>priority_queue 的常见用途</h2><p>priority_queue可以解决一些贪心问题，也可以对Dijkstra算法进行优化（因为优先队列的本质是堆）。</p>
+<p><strong>注：</strong>使用top()前，必须用empty()判断优先队列是否为空，否则可能因为队空而出现错误。</p>
+<h1 id="C-stack"><a href="#C-stack" class="headerlink" title="C++ stack"></a>C++ stack</h1><p>stuck翻译为栈，是STL中一种后进先出的容器。</p>
+<h2 id="stack-的定义"><a href="#stack-的定义" class="headerlink" title="stack 的定义"></a>stack 的定义</h2><p>声明：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br></pre></td></tr></table></figure>
+
+<p>定义：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="stack-容器内元素的访问"><a href="#stack-容器内元素的访问" class="headerlink" title="stack 容器内元素的访问"></a>stack 容器内元素的访问</h2><p>由于栈（stack）本身就是一种先进后出的数据结构，在STL的stack中只能通过top()来访问栈顶元素：</p>
+<h2 id="stack-常用函数解析"><a href="#stack-常用函数解析" class="headerlink" title="stack 常用函数解析"></a>stack 常用函数解析</h2><ol>
+<li>push()</li>
+<li>top()</li>
+<li>pop()</li>
+<li>empty()</li>
+<li>size()</li>
+</ol>
+<h2 id="stack-常见用途"><a href="#stack-常见用途" class="headerlink" title="stack 常见用途"></a>stack 常见用途</h2><p>用来模拟实现一些递归，放置程序对栈内存的限制而导致程序出错。一般来说，程序栈的内存空间很小，对有些题目来说，如果用普通的函数进行递归，一旦递归层数过深（不同机器不同，约几千至几万层）则会导致程序运行崩溃。如果用stack来模拟递归算法实现，可以避免这一问题。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C/" rel="tag">C++</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/20/C-STL-1/">
+                <span class="level-item">C++标准模板库STL(一)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/12/20/C-STL-2/';
+        this.page.identifier = '2019/12/20/C-STL-2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#C-set">
+        <span class="has-mr-6">1</span>
+        <span>C++ set</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#set-的定义">
+        <span class="has-mr-6">1.1</span>
+        <span>set 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-容器元素的访问">
+        <span class="has-mr-6">1.2</span>
+        <span>set 容器元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-常用函数实例解析">
+        <span class="has-mr-6">1.3</span>
+        <span>set 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-的常见用途">
+        <span class="has-mr-6">1.4</span>
+        <span>set 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-queue">
+        <span class="has-mr-6">2</span>
+        <span>C++ queue</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#queue定义">
+        <span class="has-mr-6">2.1</span>
+        <span>queue定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#queue容器内元素的访问">
+        <span class="has-mr-6">2.2</span>
+        <span>queue容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用函数解析">
+        <span class="has-mr-6">2.3</span>
+        <span>常用函数解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#queue-常见用途">
+        <span class="has-mr-6">2.4</span>
+        <span>queue 常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#priority-queue-优先队列">
+        <span class="has-mr-6">3</span>
+        <span>priority_queue 优先队列</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#priority-queue-的定义">
+        <span class="has-mr-6">3.1</span>
+        <span>priority_queue 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-容器内元素的访问">
+        <span class="has-mr-6">3.2</span>
+        <span>priority_queue 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-常用函数实例解析">
+        <span class="has-mr-6">3.3</span>
+        <span>priority_queue 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-内元素优先级设置">
+        <span class="has-mr-6">3.4</span>
+        <span>priority_queue 内元素优先级设置</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-的常见用途">
+        <span class="has-mr-6">3.5</span>
+        <span>priority_queue 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-stack">
+        <span class="has-mr-6">4</span>
+        <span>C++ stack</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#stack-的定义">
+        <span class="has-mr-6">4.1</span>
+        <span>stack 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-容器内元素的访问">
+        <span class="has-mr-6">4.2</span>
+        <span>stack 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-常用函数解析">
+        <span class="has-mr-6">4.3</span>
+        <span>stack 常用函数解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-常见用途">
+        <span class="has-mr-6">4.4</span>
+        <span>stack 常见用途</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#C-set">
+        <span class="has-mr-6">1</span>
+        <span>C++ set</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#set-的定义">
+        <span class="has-mr-6">1.1</span>
+        <span>set 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-容器元素的访问">
+        <span class="has-mr-6">1.2</span>
+        <span>set 容器元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-常用函数实例解析">
+        <span class="has-mr-6">1.3</span>
+        <span>set 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#set-的常见用途">
+        <span class="has-mr-6">1.4</span>
+        <span>set 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-queue">
+        <span class="has-mr-6">2</span>
+        <span>C++ queue</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#queue定义">
+        <span class="has-mr-6">2.1</span>
+        <span>queue定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#queue容器内元素的访问">
+        <span class="has-mr-6">2.2</span>
+        <span>queue容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用函数解析">
+        <span class="has-mr-6">2.3</span>
+        <span>常用函数解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#queue-常见用途">
+        <span class="has-mr-6">2.4</span>
+        <span>queue 常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#priority-queue-优先队列">
+        <span class="has-mr-6">3</span>
+        <span>priority_queue 优先队列</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#priority-queue-的定义">
+        <span class="has-mr-6">3.1</span>
+        <span>priority_queue 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-容器内元素的访问">
+        <span class="has-mr-6">3.2</span>
+        <span>priority_queue 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-常用函数实例解析">
+        <span class="has-mr-6">3.3</span>
+        <span>priority_queue 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-内元素优先级设置">
+        <span class="has-mr-6">3.4</span>
+        <span>priority_queue 内元素优先级设置</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue-的常见用途">
+        <span class="has-mr-6">3.5</span>
+        <span>priority_queue 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-stack">
+        <span class="has-mr-6">4</span>
+        <span>C++ stack</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#stack-的定义">
+        <span class="has-mr-6">4.1</span>
+        <span>stack 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-容器内元素的访问">
+        <span class="has-mr-6">4.2</span>
+        <span>stack 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-常用函数解析">
+        <span class="has-mr-6">4.3</span>
+        <span>stack 常用函数解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack-常见用途">
+        <span class="has-mr-6">4.4</span>
+        <span>stack 常见用途</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="C++标准模板库STL(二)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>①Android开发-UI布局介绍 - Hexo</title>
+
+
+    <meta name="description" content="常用的布局 | 布局定义方式 | Android UI屏幕适配 | 布局方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="①Android开发-UI布局介绍">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;25&#x2F;Android%E5%BC%80%E5%8F%91-UI%E5%B8%83%E5%B1%80%E4%BB%8B%E7%BB%8D&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用的布局 | 布局定义方式 | Android UI屏幕适配 | 布局方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-01-25T13:28:04.000Z">
+<meta property="article:modified_time" content="2019-12-21T07:12:47.139Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="①Android开发-UI布局介绍" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-25T13:28:04.000Z">2019-01-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2356 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ①Android开发-UI布局介绍
+            
+        </h1>
+        <div class="content">
+            <center>常用的布局 | 布局定义方式 | Android UI屏幕适配 | 布局方式</center>
+<a id="more"></a>
+
+<p>Android中所有的UI（用户界面）都是使用View和ViewGroup对象建立的，<code>View</code>是一个可以将一些信息绘制在屏幕上并与用户产生交互的对象<code>ViewGroup</code>是一个可以包含多个的View和ViewGroup的容器，用来定义UI布局。</p>
+<p>Android提供了一系列View和ViewGroup子类，开发者可以灵活的组合使用它们来完成界面布局、界面元素绘制和用户交互等工作</p>
+<p>开发者还可以选择性地继承一些系统提供的View，来定义View，把自己定义的界面元素显示给用户。</p>
+<p>Android的UI开发使用层次模型来完成，一般都是在一个ViewGroup中嵌套多层ViewGroup，每层中含有任意数目的View，但最好不要超过十层</p>
+<h2 id="1-常用的布局"><a href="#1-常用的布局" class="headerlink" title="1. 常用的布局"></a>1. 常用的布局</h2><ul>
+<li><p>LinearLayout——线性布局</p>
+</li>
+<li><p>RelativeLayout——相对布局</p>
+</li>
+<li><p>FrameLayout——帧布局</p>
+</li>
+<li><p>TableLayout——表格布局</p>
+</li>
+<li><p>AbsoluteLayout——绝对布局</p>
+</li>
+<li><p>GridLayout——网格布局</p>
+</li>
+</ul>
+<h2 id="2-布局定义方式"><a href="#2-布局定义方式" class="headerlink" title="2. 布局定义方式"></a>2. 布局定义方式</h2><p>定义UI布局的最常用的方法是使用XML布局文件，如同HTML一样，XML为布局提供了一种可读的结构。XML中的每个元素都是，View或ViewGroup的子孙的对象组成的树。树根是一个ViewGroup对象，所有的叶节点都是View对象，树的分支节点都是ViewGroup对象。</p>
+<p>Android中是ViewGroup可以嵌套包含很多View以及ViewGroup对象，ViewGroup是View的子类。</p>
+<h2 id="3-Android-UI屏幕适配"><a href="#3-Android-UI屏幕适配" class="headerlink" title="3. Android UI屏幕适配"></a>3. Android UI屏幕适配</h2><ul>
+<li><p><strong>屏幕尺寸</strong>：指屏幕的对角线长度，单位为英寸，1英寸== 2.45cm</p>
+</li>
+<li><p><strong>屏幕分辨率</strong>：指水平和垂直方向的像素点个数，单位px，1px== 1像素点，一般以垂直像素*水平像素，例如 1920 * 1080</p>
+</li>
+<li><p><strong>屏幕像素密度</strong>：指每英寸上的像素点数，单位是dpi，dpi:dot per inch。屏幕像素密度与屏幕尺寸有关。 </p>
+</li>
+<li><p><strong>px</strong>：像素点，构成图像的最小单位</p>
+</li>
+<li><p><strong>dip</strong>：device independent pixels（设备独立像素），也是密度无关像素。以160dpi为基准，1dip=1px。</p>
+</li>
+<li><p><strong>dp</strong>：与dip相同。</p>
+</li>
+<li><p><strong>sp</strong>：专门用于字体的像素单位，一般定义为偶数。</p>
+</li>
+</ul>
+<h2 id="4-LinearLayout-（线性布局）"><a href="#4-LinearLayout-（线性布局）" class="headerlink" title="4. LinearLayout （线性布局）"></a>4. LinearLayout （线性布局）</h2><h3 id="1-vertical-horizontal"><a href="#1-vertical-horizontal" class="headerlink" title="1. vertical / horizontal"></a>1. vertical / horizontal</h3><blockquote>
+<p>使用<code>android:orientation= &quot;vertical/horizontal&quot;</code>定义排列方向</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//linearlayout.xml</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"vertical"</span> &gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">&lt;!--线性布局是按照水平和垂直排布的，默认是水平排布的</span></span><br><span class="line"><span class="hljs-comment">    	orientation：用来指定当前线性布局排布的方向</span></span><br><span class="line"><span class="hljs-comment">    	horizontal:水平</span></span><br><span class="line"><span class="hljs-comment">    	vertical:垂直--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-margin-padding"><a href="#2-margin-padding" class="headerlink" title="2. margin / padding"></a>2. margin / padding</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:layout_marginXXX(XXX:left/tpo)</td>
+<td>设置该控件距离左、上边界的距离</td>
+</tr>
+<tr>
+<td>android:paddingXXX(XXX:left/top)</td>
+<td>设置控件内部距离控件边缘的距离</td>
+</tr>
+</tbody></table>
+<ul>
+<li>区分：<br>margin:表示控件距离其他或者屏幕边缘的间距。—外边距<br>padding:表示控件的内部内容距离控件边缘的间距。—内边距</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/button1"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:padding</span>=<span class="hljs-string">"30dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:text</span>=<span class="hljs-string">"Button"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!--wrap_content :代表包裹内容，适合内容大小</span></span><br><span class="line"><span class="hljs-comment">    	match_parent :父类大小</span></span><br><span class="line"><span class="hljs-comment">    	layout_margn是指组件距离父窗体的距离，</span></span><br><span class="line"><span class="hljs-comment">    	padding是指组件中的内容距离组件边缘的距离--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-gravity-layout-gravity"><a href="#3-gravity-layout-gravity" class="headerlink" title="3. gravity / layout_gravity"></a>3. gravity / layout_gravity</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:gravity</td>
+<td>用于设置该View内部内容的对齐方式</td>
+</tr>
+<tr>
+<td>android:layout_gravity</td>
+<td>用于设置该View在其父类中的对齐方式</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>注意：如果线性布局的排布方式为水平，那么layout_gravity在水平方向上就不起作用，只有在垂直方向上起作用，反之亦然。</p>
+</li>
+<li><p>可选值包括：<br>left、right、top、bottom、center、horizon<br>center_vertical、center_horizontal<br>bottom\center_horizontal（使用<code>\</code>组合使用）</p>
+</li>
+</ul>
+<h3 id="4-layout-weight-（LinearLayout特有属性）"><a href="#4-layout-weight-（LinearLayout特有属性）" class="headerlink" title="4. layout_weight （LinearLayout特有属性）"></a>4. layout_weight （LinearLayout特有属性）</h3><blockquote>
+<p>LinearLayout特有属性，<code>android:layout_weight</code>,表示比重，可实现百分比布局，如果控件为 <code>match_parent</code>,则<code>layout_weight</code>的值与占比重反相关，即：其值越大，占用比例越小，如果控件为 <code>wrap_content</code>，则对比重判断则为正相关，即其值越小，占用的比例越小。</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"vertical"</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:weightSum</span>=<span class="hljs-string">"3"</span>&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!--总的权重--&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#00ff00"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"2"</span>&gt;</span></span><br><span class="line">	    <span class="hljs-comment">&lt;!--绿色区，权重为2--&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">		<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#ff0000"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"1"</span>&gt;</span></span><br><span class="line">	    <span class="hljs-comment">&lt;!--红色区，权重为1--&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意：<br>若在一个页面中，有一个有权重控件，和一个无权重的控件，系统会先给无权重的控件分配空间后，才会得到需要百分比的空间大小，进行百分比划分。权重布局只存在于LinearLayout中，其余布局无效。</li>
+</ul>
+<h2 id="5-RelativeLayout（相对布局"><a href="#5-RelativeLayout（相对布局" class="headerlink" title="5. RelativeLayout（相对布局)"></a>5. RelativeLayout（相对布局)</h2><p>RelativeLayout（相对布局)：按照控件相互之间的相对位置来确定，RelativeLayout中往往需要定义每一个控件的资源ID。</p>
+<h3 id="1-常用属性"><a href="#1-常用属性" class="headerlink" title="1. 常用属性"></a>1. 常用属性</h3><table>
+<thead>
+<tr>
+<th>常用属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout_alineParentXXX（XXX:方向）</td>
+<td>对齐方式</td>
+</tr>
+<tr>
+<td>android:layout_marginXXX</td>
+<td>外部间距</td>
+</tr>
+<tr>
+<td>android:paddingXXX(XXX:left/top)</td>
+<td>内部间距</td>
+</tr>
+<tr>
+<td>android:layout_centerVertical</td>
+<td>垂直居中</td>
+</tr>
+<tr>
+<td>android:layout_centerHorizontal</td>
+<td>水平居中</td>
+</tr>
+<tr>
+<td>android:layout_centerInParent</td>
+<td>父类的中部</td>
+</tr>
+</tbody></table>
+<p>注意：<code>layout_width</code>和<code>layout_height</code>是在平面图形中不可或缺的两个属性，任何图形需要显示都需要宽和高。</p>
+<h3 id="2-android-layout-toRightOf（在某个控件的右方）"><a href="#2-android-layout-toRightOf（在某个控件的右方）" class="headerlink" title="2. android:layout_toRightOf（在某个控件的右方）"></a>2. android:layout_toRightOf（在某个控件的右方）</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/button1"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">"30dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_marginLeft</span>=<span class="hljs-string">"30dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:padding</span>=<span class="hljs-string">"20dp"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:text</span>=<span class="hljs-string">"Button"</span>/&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!--@+id:表示系统本来不存在的对应ID值，其方向性的单词可以更换。</span></span><br><span class="line"><span class="hljs-comment">		以上Button可作为参照物--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_toRightOf</span>=<span class="hljs-string">"@id+button1"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_alingnBottom</span>=<span class="hljs-string">"@+id/button1"</span>/&gt;</span>    </span><br><span class="line">    <span class="hljs-comment">&lt;!--在控件的右方、底部--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-anignBaseline-（基准线对齐）"><a href="#3-anignBaseline-（基准线对齐）" class="headerlink" title="3. anignBaseline （基准线对齐）"></a>3. anignBaseline （基准线对齐）</h3><h3 id="4-layout-below-（在XX的下方）"><a href="#4-layout-below-（在XX的下方）" class="headerlink" title="4. layout_below （在XX的下方）"></a>4. layout_below （在XX的下方）</h3><ul>
+<li><p>注意：</p>
+<p>针对相对布局而言，一般不会过多给定很多想关联的属性，否则耦合性就会大大增加。相对布局的重点在于理解控件id，在相对布局中的控件一般都存在id属性，<code>+id</code>表示是系统中本来不存在的对应的id值，需要将这个id值添加到系统中，<code>@id</code>表示从系统中去除已经添加好的id。</p>
+</li>
+</ul>
+<h2 id="6-TableLayout-（表格布局）"><a href="#6-TableLayout-（表格布局）" class="headerlink" title="6. TableLayout （表格布局）"></a>6. TableLayout （表格布局）</h2><p>TableLayout属于行和列形式的管理控件，每行为一个TableRow对象也可以是一个View对象。在TableRow中还可以继续添加其他控件，每添加一个子控件就成一列，TableLayout不会生成边框。</p>
+<p>TableLayout是继承至LinearLayout，即TableLayout有LinearLayout的属性（见上文）。同时也有自己的特有属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML属性名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">android:collapseColumns</td>
+<td align="left">设置指定的列为collapse，该列会被隐藏</td>
+</tr>
+<tr>
+<td align="left">android:shrinkColumns</td>
+<td align="left">设置指定的列为shrinkable，该列的宽度进行收缩，自适应父类容器的大小</td>
+</tr>
+<tr>
+<td align="left">android:stretchColumns</td>
+<td align="left">设置指定的列为stretch,该列会被拉伸，填充满表格的空白区域</td>
+</tr>
+</tbody></table>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">TableLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:stretchColumns</span>=<span class="hljs-string">"0,1,2"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:shrinkColumns</span>=<span class="hljs-string">"0"</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:collapseColumns</span>=<span class="hljs-string">"2"</span>&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!--stretch拉伸1,2,3列，</span></span><br><span class="line"><span class="hljs-comment">		shrinkable收缩第一列，</span></span><br><span class="line"><span class="hljs-comment">		collapse隐藏第一列</span></span><br><span class="line"><span class="hljs-comment">		拉伸后收缩时因为，如果第一列内容过多，会覆盖第二三列，</span></span><br><span class="line"><span class="hljs-comment">		因此要收缩第一列，以显示所有内容--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">TableRow</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span>&gt;</span></span><br><span class="line">        <span class="hljs-comment">&lt;!--此处Table可不设定宽高值，系统自动给定--&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:padding</span>=<span class="hljs-string">"5dp"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:text</span>=<span class="hljs-string">"姓名"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-comment">&lt;!--TableLayout是LinearLayout的子类，可设置gravity、padding等属性--&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:text</span>=<span class="hljs-string">"性别"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:text</span>=<span class="hljs-string">"电话"</span>/&gt;</span></span><br><span class="line">     <span class="hljs-tag">&lt;/<span class="hljs-name">TableRow</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">TableRow</span></span></span><br><span class="line"><span class="hljs-tag">     	<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_patent"</span></span></span><br><span class="line"><span class="hljs-tag">     	<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">     	<span class="hljs-attr">android:</span>"<span class="hljs-attr">right</span>"&gt;</span></span><br><span class="line">     	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span></span><br><span class="line"><span class="hljs-tag">     		<span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">     		<span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">     		<span class="hljs-attr">android:layout_marginRight</span>=<span class="hljs-string">"30dp"</span></span></span><br><span class="line"><span class="hljs-tag">     		<span class="hljs-attr">android:text</span>=<span class="hljs-string">"总计：100"</span>/&gt;</span></span><br><span class="line">     <span class="hljs-tag">&lt;/<span class="hljs-name">TableRow</span>&gt;</span></span><br><span class="line">     <span class="hljs-comment">&lt;!--此TableRow未遵循此表格布局--&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">TableLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-FrameLayout-（帧布局）-AbsoluteLayout-（绝对布局）"><a href="#7-FrameLayout-（帧布局）-AbsoluteLayout-（绝对布局）" class="headerlink" title="7. FrameLayout （帧布局）/ AbsoluteLayout （绝对布局）"></a>7. FrameLayout （帧布局）/ AbsoluteLayout （绝对布局）</h2><p>FrameLayout（帧布局）默认是按左上角(0,0)开始排布，在帧布局下的每一个控件都是以画面的形式进行呈现，最开始定义的控件出现在最下方，最后定义的控件出现在最上方，一般用于手机联系人的导航显示字母、帧动画等内容。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span> &gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#00ff00"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:text</span>=<span class="hljs-string">"你好"</span>/&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> </span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">"30dp"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#ff0000"</span></span></span><br><span class="line"><span class="hljs-tag">	    <span class="hljs-attr">android:text</span>=<span class="hljs-string">"页面"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>AbsoluteLayout（绝对布局），又叫做坐标布局，可以直接指定子元素的绝对位置，这种布局简单、直观性强。由于手机屏幕尺寸差别较大，使用绝对定位适应性会比较差，不推荐使用。一般用于固定屏幕手机。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:layout_x</td>
+<td>确定X坐标，以左上角为顶点</td>
+</tr>
+<tr>
+<td>android:layout_y</td>
+<td>确定Y坐标，以左上角为顶点</td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：若不设置layout_x和layout_y，那么他们的默认值是(0,0)他们会出现在左上角。</li>
+</ul>
+<h2 id="8-GridLayout-（网格布局）"><a href="#8-GridLayout-（网格布局）" class="headerlink" title="8. GridLayout （网格布局）"></a>8. GridLayout （网格布局）</h2><p>GridLayout（网格布局）是在android4.0版本以上出现的布局，可以实现并行和并列的效果。</p>
+<table>
+<thead>
+<tr>
+<th>常用属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:layout_columnSpan</td>
+<td>扩展列的数目</td>
+</tr>
+<tr>
+<td>android:layout_rowSpan</td>
+<td>扩展行的数目</td>
+</tr>
+<tr>
+<td>android:layout_gravity</td>
+<td>填充方式</td>
+</tr>
+<tr>
+<td>columnCount</td>
+<td>定义存在多少列</td>
+</tr>
+<tr>
+<td>rowCount</td>
+<td>定义存在多少行</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>注意：</p>
+<p>GridLayout与TableLayout有什么不同？</p>
+<p>TableLayout定义TableRow来呈现内容，GridLayout可以直接定义控件来使用，并且TableLayout不可以合并行或列。</p>
+</li>
+</ul>
+<p>计算器页面的实现</p>
+<img src="/2019/01/25/Android%E5%BC%80%E5%8F%91-UI%E5%B8%83%E5%B1%80%E4%BB%8B%E7%BB%8D/计算器页面.jpg">
+
+
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">GridLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span> </span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:columnCount</span>=<span class="hljs-string">"4"</span>&gt;</span></span><br><span class="line"><span class="hljs-comment">&lt;!--使用columnCount定义一共4列--&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!--放置按键--&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num1"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num2"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"2"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num3"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"3"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/chu"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"/"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num4"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"4"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num5"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"5"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num6"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"6"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/cheng"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"*"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num7"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"7"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num8"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"8"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num9"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"9"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/jian"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"-"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/num0"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_columnSpan</span>=<span class="hljs-string">"2"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">"fill"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"0"</span>/&gt;</span></span><br><span class="line">	<span class="hljs-comment">&lt;!--columnSpan合并两列gravity填充整个区域--&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/dian"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"."</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/jia"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_rowSpan</span>=<span class="hljs-string">"2"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">"fill"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"+"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">     <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> </span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/deng"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_columnSpan</span>=<span class="hljs-string">"3"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">"fill"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"="</span>/&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">GridLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Android UI开发分类</p>
+<ol>
+<li>界面布局开发——定义界面的布局</li>
+<li>控件开发——定义单个界面元素</li>
+<li>AdapterView与Adapter开发——列表显示（适配器的开发）</li>
+<li>UI组件开发——对话框、通知、菜单等</li>
+<li>自定义View、图形图像和动画——通过代码，自行绘制界面。</li>
+</ol>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android%E5%BC%80%E5%8F%91/" rel="tag">Android开发</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/26/Android%E5%BC%80%E5%8F%91-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B61/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">②Android开发-常用控件（一）</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/01/25/Android%E5%BC%80%E5%8F%91-UI%E5%B8%83%E5%B1%80%E4%BB%8B%E7%BB%8D/';
+        this.page.identifier = '2019/01/25/Android开发-UI布局介绍/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-常用的布局">
+        <span class="has-mr-6">1</span>
+        <span>1. 常用的布局</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-布局定义方式">
+        <span class="has-mr-6">2</span>
+        <span>2. 布局定义方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-Android-UI屏幕适配">
+        <span class="has-mr-6">3</span>
+        <span>3. Android UI屏幕适配</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-LinearLayout-（线性布局）">
+        <span class="has-mr-6">4</span>
+        <span>4. LinearLayout （线性布局）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-vertical-horizontal">
+        <span class="has-mr-6">4.1</span>
+        <span>1. vertical / horizontal</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-margin-padding">
+        <span class="has-mr-6">4.2</span>
+        <span>2. margin / padding</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-gravity-layout-gravity">
+        <span class="has-mr-6">4.3</span>
+        <span>3. gravity / layout_gravity</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-layout-weight-（LinearLayout特有属性）">
+        <span class="has-mr-6">4.4</span>
+        <span>4. layout_weight （LinearLayout特有属性）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-RelativeLayout（相对布局">
+        <span class="has-mr-6">5</span>
+        <span>5. RelativeLayout（相对布局)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-常用属性">
+        <span class="has-mr-6">5.1</span>
+        <span>1. 常用属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-android-layout-toRightOf（在某个控件的右方）">
+        <span class="has-mr-6">5.2</span>
+        <span>2. android:layout_toRightOf（在某个控件的右方）</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-anignBaseline-（基准线对齐）">
+        <span class="has-mr-6">5.3</span>
+        <span>3. anignBaseline （基准线对齐）</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-layout-below-（在XX的下方）">
+        <span class="has-mr-6">5.4</span>
+        <span>4. layout_below （在XX的下方）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#6-TableLayout-（表格布局）">
+        <span class="has-mr-6">6</span>
+        <span>6. TableLayout （表格布局）</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-FrameLayout-（帧布局）-AbsoluteLayout-（绝对布局）">
+        <span class="has-mr-6">7</span>
+        <span>7. FrameLayout （帧布局）/ AbsoluteLayout （绝对布局）</span>
+        </a></li><li>
+        <a class="is-flex" href="#8-GridLayout-（网格布局）">
+        <span class="has-mr-6">8</span>
+        <span>8. GridLayout （网格布局）</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-常用的布局">
+        <span class="has-mr-6">1</span>
+        <span>1. 常用的布局</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-布局定义方式">
+        <span class="has-mr-6">2</span>
+        <span>2. 布局定义方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-Android-UI屏幕适配">
+        <span class="has-mr-6">3</span>
+        <span>3. Android UI屏幕适配</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-LinearLayout-（线性布局）">
+        <span class="has-mr-6">4</span>
+        <span>4. LinearLayout （线性布局）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-vertical-horizontal">
+        <span class="has-mr-6">4.1</span>
+        <span>1. vertical / horizontal</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-margin-padding">
+        <span class="has-mr-6">4.2</span>
+        <span>2. margin / padding</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-gravity-layout-gravity">
+        <span class="has-mr-6">4.3</span>
+        <span>3. gravity / layout_gravity</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-layout-weight-（LinearLayout特有属性）">
+        <span class="has-mr-6">4.4</span>
+        <span>4. layout_weight （LinearLayout特有属性）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-RelativeLayout（相对布局">
+        <span class="has-mr-6">5</span>
+        <span>5. RelativeLayout（相对布局)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-常用属性">
+        <span class="has-mr-6">5.1</span>
+        <span>1. 常用属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-android-layout-toRightOf（在某个控件的右方）">
+        <span class="has-mr-6">5.2</span>
+        <span>2. android:layout_toRightOf（在某个控件的右方）</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-anignBaseline-（基准线对齐）">
+        <span class="has-mr-6">5.3</span>
+        <span>3. anignBaseline （基准线对齐）</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-layout-below-（在XX的下方）">
+        <span class="has-mr-6">5.4</span>
+        <span>4. layout_below （在XX的下方）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#6-TableLayout-（表格布局）">
+        <span class="has-mr-6">6</span>
+        <span>6. TableLayout （表格布局）</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-FrameLayout-（帧布局）-AbsoluteLayout-（绝对布局）">
+        <span class="has-mr-6">7</span>
+        <span>7. FrameLayout （帧布局）/ AbsoluteLayout （绝对布局）</span>
+        </a></li><li>
+        <a class="is-flex" href="#8-GridLayout-（网格布局）">
+        <span class="has-mr-6">8</span>
+        <span>8. GridLayout （网格布局）</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="①Android开发-UI布局介绍" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

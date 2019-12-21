@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C++标准模板库STL(一) - Hexo</title>
+
+
+    <meta name="description" content="STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++标准模板库STL(一)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;C-STL-1&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-12-20T13:39:07.000Z">
+<meta property="article:modified_time" content="2019-12-21T05:35:06.239Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="C++标准模板库STL(一)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 分钟 读完 (大约 3413 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C++标准模板库STL(一)
+            
+        </h1>
+        <div class="content">
+            <p>STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL是C++的一部分，因此不用安装额外的库文件。</p>
+<a id="more"></a>
+
+
+
+<h1 id="序列性容器"><a href="#序列性容器" class="headerlink" title="序列性容器"></a>序列性容器</h1><p>序列性容器以线性的方式存储元素，它没有对元素进行排序，元素的顺序和存储他们的顺序相同。</p>
+<ul>
+<li>array&lt;T,N&gt;：数组容器，一个长度固定的序列，有N个T类型的对象，不能增加和删除元素；</li>
+<li>vector&lt;T&gt;：向量容器，一个长度可变的序列，用来存放T类型的对象，必要时可以增加容量，但只能在序列的末尾高效的增加和删除元素；</li>
+<li>deque&lt;T&gt;：双向队列容器，是一个长度可变的、可以自动增长的序列，在序列的两端都不能高效的增加和删除元素；</li>
+<li>list&lt;T&gt;：链表容器，是一个长度可变的、由 T 类型对象组成的序列，它以双向链表的形式组织元素，在这个序列的任何地方都可以高效地增加或删除元素。访问容器中任意元素的速度要比前三种容器慢，这是因为 list&lt;T&gt; 必须从第一个元素或最后一个元素开始访问，需要沿着链表移动，直到到达想要的元素。</li>
+<li>forward list&lt;T&gt;：正向链表容器，是一个长度可变的、由 T 类型对象组成的序列，它以单链表的形式组织元素，是一类比链表容器快、更节省内存的容器，但是它内部的元素只能从第一个元素开始访问。</li>
+</ul>
+<div align="center">
+<img src="http://c.biancheng.net/uploads/allimg/180911/2-1P911110REB.jpg">
+</div>
+
+<h1 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h1><p>vector即变长数组（长度根据需要而自动改变的数组）使用vector，需要添加vector头文件，即<code>#include &lt;vector&gt;</code>。除此之外，还需要在头文件下加上一句<code>using namespace std;</code>这样就可以在代码中使用vector了。</p>
+<h2 id="vector定义"><a href="#vector定义" class="headerlink" title="vector定义"></a>vector定义</h2><p>单独定义一个vector：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+
+<p>如上定义相当于定义了一个二维数组，<code>name&lt;SIZE&gt;</code>，只不过其长度可以根据需要进行自由变化，比较节省空间。</p>
+<p>和一维数组一样，这里的typename可以是任何基本类型，例如：int、double、char、结构体等，也可以是STL标准容器，例如：vector、set、queue等。</p>
+<p><strong>注：</strong>如果typename也是一个STL容器，定义时需要在&gt;&gt;符号之间加上空格。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; name;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">double</span>&gt; name;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; name;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;node&gt; name; <span class="hljs-comment">// node是结构体的类型</span></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; name; <span class="hljs-comment">// 需要在&gt;&gt;之间加上空格</span></span><br></pre></td></tr></table></figure>
+
+<p>如果联想而二维数组的定义，即其中的一维是数组的组数：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
+
+<p>那么vector数组也一样，即Arrayname[]中的每一个元素都是一个vector，可以把vector数组当作两个可以变长的二维数组理解。</p>
+<p>例如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi[<span class="hljs-number">100</span>];</span><br></pre></td></tr></table></figure>
+
+<p>这样vi[0]~vi[99] 中每一个都是一个vector容器。</p>
+<p>与<code>vector&lt;vector&lt;int&gt; &gt; name</code>不同的是，这种写法的一维长度已经固定为arraySize，另一维度才是“边长”的数组。</p>
+<h2 id="vector元素的访问"><a href="#vector元素的访问" class="headerlink" title="vector元素的访问"></a>vector元素的访问</h2><p>vector一般有两种访问方式：</p>
+<ul>
+<li><p>通过下标访问</p>
+<p>与访问数组一样，对于<code>vector&lt;typename&gt; vi</code>的vector容器来说，直接访问vi[index]即可。</p>
+</li>
+<li><p>通过迭代器访问</p>
+<p>迭代器可以理解为一种类似指针的东西，其定义是：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<p>则it就是一个<code>vector&lt;typename&gt;::iterator</code>型的变量，typename可以替换为vector容器的类型，如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">double</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<p>这样就得到了一个迭代器it，并且可以通过*it访问vector里的元素。例如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;</span><br><span class="line">        vi.push_back(i+<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = vi.<span class="hljs-built_in">begin</span>(); it != vi.<span class="hljs-built_in">end</span>(); it++)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>,*it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="vector-常用函数实例解析"><a href="#vector-常用函数实例解析" class="headerlink" title="vector 常用函数实例解析"></a>vector 常用函数实例解析</h2><ol>
+<li><p>push_back()</p>
+<p>在vector后面添加一个元素，时间复杂度为O(1)。</p>
+</li>
+<li><p>pop_back()</p>
+<p>可以删除vector的尾部元素，时间复杂度为O(1)。</p>
+</li>
+<li><p>size()</p>
+<p>用来获得vector中元素的个数，时间复杂度为O(l)。size()返回的是unsigned类型，不过一般使用%d不会出很大问题，这一点对于所有的STL容器都是一样的。</p>
+</li>
+<li><p>clear()</p>
+<p>用来清空vector中的所有元素，时间复杂度为O(N)，其中N为vector中元素的个数。</p>
+</li>
+<li><p>insert()</p>
+<p><code>insert(it,x)</code>用来向vector的任意迭代器it处插入一个元素x，时间复杂度为O(N)。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++)P&#123;</span><br><span class="line">    vi.push_back(i); <span class="hljs-comment">// 1 2 3 4 5</span></span><br><span class="line">  &#125;</span><br><span class="line">  vi.insert(vi.<span class="hljs-built_in">begin</span>() + <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; vi.<span class="hljs-built_in">size</span>(); i++)&#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, vi[i]); <span class="hljs-comment">// 1 2 -1 3 4 5</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>erase()</p>
+<p>有两种用法：</p>
+<ul>
+<li><p>删除单个元素</p>
+<p><code>erase(it)</code>删除迭代器为it的元素。</p>
+</li>
+<li><p>删除一个区间的所有元素。</p>
+<p><code>erase（first，last）</code>删除[first,last)内的所有元素。</p>
+</li>
+</ul>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>；</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; i &lt;= <span class="hljs-number">9</span>; i++)&#123;</span><br><span class="line">		vi.back_push(i); <span class="hljs-comment">// 5 6 7 8 9</span></span><br><span class="line">  &#125;</span><br><span class="line">  vi.erase(vi.<span class="hljs-built_in">begin</span>() + <span class="hljs-number">1</span>, vi.<span class="hljs-built_in">begin</span>()+<span class="hljs-number">4</span>); <span class="hljs-comment">// 删除vi[1], vi[2], vi[3]</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; vi.<span class="hljs-built_in">size</span>(); i++)&#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, vi[i]); <span class="hljs-comment">// 5 9</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注</strong>：<br>在使用eraser()时，会将迭代器一并删除，导致不能使用it++来找到下一个元素，此时，可以利用vector.eraser()函数会返回当前被删除迭代器的特性:</p>
+</blockquote>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;child&gt;::iterator it = vi.<span class="hljs-built_in">begin</span>(); it != vi.<span class="hljs-built_in">end</span>();)&#123;</span><br><span class="line">         (*it).num = ++temp;</span><br><span class="line">         <span class="hljs-keyword">if</span> (*it == <span class="hljs-number">0</span>)&#123;</span><br><span class="line">             it = vi.erase(it);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">             it++;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="vector-常见用途"><a href="#vector-常见用途" class="headerlink" title="vector 常见用途"></a>vector 常见用途</h2><ol>
+<li>存储数据<ul>
+<li>vector本身可以作为数组使用，而且在一些元素个数不确定的场合可以很好的节省空间。</li>
+<li>有些场合需要把数据输出在同一行，数据中间用空格隔开。由于输出的个数是不确定的，为了方便的处理最后一个满足条件的数据不输出额外的空格，可以用vector记录所有输出的数据，然后一次性输出。</li>
+</ul>
+</li>
+<li>用邻接表存储图</li>
+</ol>
+<h1 id="C-map"><a href="#C-map" class="headerlink" title="C++ map"></a>C++ map</h1><p>map翻译为映射，在定义数组时（如<code>int array[100]</code>）,其实是定义了一个从int型到int型的映射，比如<code>array[0] = 25</code>就是将0映射到25。无论是double数组还是字符数组都是将int型映射到其他类型，但当需要以其他关键字来做映射时，会显得不太方便，例如字典需要：字符串–&gt;页码的对应关系，这时就可以使用map。</p>
+<p><strong>map可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）</strong>，也就可以建立string到int的映射。</p>
+<p>来看一个情况：需要判断一些数字是否在文件中出现过，按照正常的思路，可以开一个bool型hashTable[max_size]，通过判断hashTable[x]为true还是false来确定x是否在文件中出现过，但是会碰到一个问题，如果这些数字很大（几千位），name这个数组就开不了。而这时就可以使用map，可以把这些数字当成字符串，然后建立string–int的映射（或者直接建立int–int的映射）。</p>
+<p>如果使用map需要</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="map-的定义"><a href="#map-的定义" class="headerlink" title="map 的定义"></a>map 的定义</h2><p>单独定义一个map：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">map</span>&lt;typename1,typename2&gt; mp;</span><br></pre></td></tr></table></figure>
+
+<p>map和其他STL容器有点不一样，因为map需要定义映射前类型（键key）和映射后类型（至value），所以需要在&lt;&gt;内写两个类型，第一个是键类型，第二个是值的类型。如果是int型映射到int型，就相当于普通的int型数组。</p>
+<p>而如果是字符串映型映射到整型，必须使用string而不能用char数组：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt; mp;</span><br></pre></td></tr></table></figure>
+
+<p>因为char数组作为数组，是不能被作为键值的。</p>
+<h2 id="map-容器内元素的访问"><a href="#map-容器内元素的访问" class="headerlink" title="map 容器内元素的访问"></a>map 容器内元素的访问</h2><p>map有两种访问方式：</p>
+<ol>
+<li><p>通过下标访问</p>
+<p>和访问数组是一样的，例如对一个定义为<code>map&lt;char, int&gt; mp</code>的mp来说，可以直接使用<code>mp[&#39;c&#39;]</code>的方式来访问它对应的整数，于是当建立映射时，就可以使用<code>mp[&#39;c&#39;]=20</code>这样和普通数组一样的方式。但要注意，<strong>map中键值是唯一的</strong>：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;</span><br><span class="line">    mp[<span class="hljs-string">'c'</span>] = <span class="hljs-number">20</span>;</span><br><span class="line">    <span class="hljs-comment">// 20被覆盖</span></span><br><span class="line">    mp[<span class="hljs-string">'c'</span>] = <span class="hljs-number">30</span>;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,mp[<span class="hljs-string">'c'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过迭代器访问</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">map</span>&lt;typename1, typename2&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<p>map迭代器使用方式与其他STL迭代器不同，因为map的每一对映射都有两个typename，这决定了必须通过一个it来同时访问键值和值。事实上，<strong>map可以使用it-&gt;first来访问键，使用it-&gt;second来访问值</strong>。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;</span><br><span class="line">    mp[<span class="hljs-string">'a'</span>] = <span class="hljs-number">24</span>;</span><br><span class="line">    mp[<span class="hljs-string">'d'</span>] = <span class="hljs-number">67</span>;</span><br><span class="line">    mp[<span class="hljs-string">'b'</span>] = <span class="hljs-number">55</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>,<span class="hljs-keyword">int</span>&gt;::iterator it = mp.<span class="hljs-built_in">begin</span>(); it != mp.<span class="hljs-built_in">end</span>(); it++)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c %d\n"</span>, it-&gt;first,it-&gt;second);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a 24</span><br><span class="line">b 55</span><br><span class="line">d 67</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，map会以键从大到小的顺序自动排列，即按照a&lt;b&lt;d的顺序自动排列，这是由于map内部的红黑树实现的（同set），在建立映射过程中可以实现从大到小的功能。</p>
+</li>
+</ol>
+<h2 id="map-常用函数实例解析"><a href="#map-常用函数实例解析" class="headerlink" title="map 常用函数实例解析"></a>map 常用函数实例解析</h2><ol>
+<li><p>find()</p>
+<p>find(key)返回键为key的映射的<strong>迭代器</strong>，时间复杂度为O(logN)</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;</span><br><span class="line">    mp[<span class="hljs-string">'a'</span>] = <span class="hljs-number">24</span>;</span><br><span class="line">    mp[<span class="hljs-string">'b'</span>] = <span class="hljs-number">67</span>;</span><br><span class="line">    mp[<span class="hljs-string">'d'</span>] = <span class="hljs-number">55</span>;</span><br><span class="line">    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>,<span class="hljs-keyword">int</span>&gt;::iterator it = mp.<span class="hljs-built_in">find</span>(<span class="hljs-string">'a'</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,it-&gt;second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>erase()</p>
+<p>有两种用法</p>
+<ul>
+<li><p>删除单个元素</p>
+<p>mp.erase(it)</p>
+<p>mp.erase(key)</p>
+</li>
+<li><p>删除一个区间内所有的元素</p>
+<p>mp.erase(first,last) — (first,last] — first与last均为迭代器</p>
+</li>
+<li><p><strong>注：</strong><br>与vector相同,map在使用eraser()方法时，也会存在找不到下一个迭代器的情况，但C++98中map::erase并没有返回值为iterator的原型函数，所以不能仿照vector的写法，在执行map.eraser(it)后,这个迭代器已经失效了，此时可以:</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;::iterator it = mapInt.<span class="hljs-built_in">begin</span>();it != mapInt.<span class="hljs-built_in">end</span>();)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(it-&gt;second == <span class="hljs-number">0</span>)&#123;</span><br><span class="line">        mapInt.erase(it++);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        it++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该方法中利用了后缀++的特点，这个时候执行mapInt.erase(it++);这条语句分为三个过程</p>
+<ol>
+<li>先把it的值赋值给一个临时变量做为传递给erase的参数变量</li>
+<li>因为参数处理优先于函数调用，所以接下来执行了it++操作，也就是it现在已经指向了下一个地址。</li>
+<li>再调用erase函数，释放掉第一步中保存的要删除的it的值的临时变量所指的位置。 </li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>size()</p>
+<p>获取map映射的对数</p>
+</li>
+<li><p>clear()</p>
+<p>用来清空map的所有元素</p>
+</li>
+</ol>
+<h2 id="map-的常见用途"><a href="#map-的常见用途" class="headerlink" title="map 的常见用途"></a>map 的常见用途</h2><ol>
+<li>需要建立字符（字符串）与整数直接映射的题目。</li>
+<li>判断大整数或者其他数据是否存在的题目，可以把map当做bool数组来用。</li>
+<li>字符串和字符映射。</li>
+</ol>
+<p><strong>延伸：</strong>map的键值是唯一的，而如果遇到一个键值需要对应多个键值，就只能用multimap，另外，C++ 11中还增加了unordered_map以散列代替map内部红黑树实现，使其可以用来处理只映射而不按key排序的需求，速度比map要快很多。</p>
+<h1 id="c-pair"><a href="#c-pair" class="headerlink" title="c++ pair"></a>c++ pair</h1><p>当想要将两个元素，绑在一起作为一个合成元素、又不想因此定义结构体时，使用pair可以方便地作为一个替代品。也就是说，pair实际上可以看作一个内部有两个元素的结构体，且这两个元素的类型是可以指定的，例如：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">pair</span>&#123;</span></span><br><span class="line">  typename1 first;</span><br><span class="line">  typename2 second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="pair-的定义"><a href="#pair-的定义" class="headerlink" title="pair 的定义"></a>pair 的定义</h2><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>由于map的内部实现中涉及pair因此添加map的头文件时会自动添加utility头文件。</p>
+<p>pair有两个参数，分别对应first和second的数据类型，他们可以是任意基本数据类型或容器。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;typename1, typename2&gt; name;</span><br></pre></td></tr></table></figure>
+
+<p>因此想要定义参数为string和int类型的pair，就可以使用如下写法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt; p;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要定义pair是进行初始化，只需要跟上一个小括号，里面填写两个想要初始化的元素即可：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt; p(<span class="hljs-string">"haha"</span>,<span class="hljs-number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make_pair(<span class="hljs-string">"haha"</span>,<span class="hljs-number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="pair-中元素的访问"><a href="#pair-中元素的访问" class="headerlink" title="pair 中元素的访问"></a>pair 中元素的访问</h2><p>pair中有两个元素，分别是first和second，只需要按正常结构体的方式访问即可。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt; p;</span><br><span class="line">    p.first = <span class="hljs-string">"香蕉"</span>;</span><br><span class="line">    p.second = <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; p.first &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; p.second &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    p = make_pair(<span class="hljs-string">"苹果"</span>,<span class="hljs-number">4</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; p.first &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; p.second &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    p = pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;(<span class="hljs-string">"葡萄"</span>,<span class="hljs-number">5</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; p.first &lt;&lt; <span class="hljs-string">" "</span> &lt;&lt; p.second &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">香蕉 3</span><br><span class="line">苹果 4</span><br><span class="line">葡萄 5</span><br></pre></td></tr></table></figure>
+
+<h2 id="pair-常用函数实例解析"><a href="#pair-常用函数实例解析" class="headerlink" title="pair 常用函数实例解析"></a>pair 常用函数实例解析</h2><p>两个pair类型数据可以直接使用<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>比较大小，比较规则是先以first的大小作为标准，只有当first相等时才去判别second的大小。</p>
+<h2 id="pair-的常见用途"><a href="#pair-的常见用途" class="headerlink" title="pair 的常见用途"></a>pair 的常见用途</h2><ol>
+<li><p>用来代替二元结构体及其构造函数，可以节省代码时间</p>
+</li>
+<li><p>作为map的键值对来进行插入：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt; mp;</span><br><span class="line">mp.insert(make_pair(<span class="hljs-string">"haha"</span>,<span class="hljs-number">5</span>));</span><br><span class="line">mp.insert(<span class="hljs-built_in">map</span>&lt;stting,<span class="hljs-keyword">int</span>&gt;(<span class="hljs-string">"haha"</span>,<span class="hljs-number">5</span>));</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C/" rel="tag">C++</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/20/C-STL-2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C++标准模板库STL(二)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/">
+                <span class="level-item">BLE开发-Android程序</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/12/20/C-STL-1/';
+        this.page.identifier = '2019/12/20/C-STL-1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#序列性容器">
+        <span class="has-mr-6">1</span>
+        <span>序列性容器</span>
+        </a></li><li>
+        <a class="is-flex" href="#Vector">
+        <span class="has-mr-6">2</span>
+        <span>Vector</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#vector定义">
+        <span class="has-mr-6">2.1</span>
+        <span>vector定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector元素的访问">
+        <span class="has-mr-6">2.2</span>
+        <span>vector元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector-常用函数实例解析">
+        <span class="has-mr-6">2.3</span>
+        <span>vector 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector-常见用途">
+        <span class="has-mr-6">2.4</span>
+        <span>vector 常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-map">
+        <span class="has-mr-6">3</span>
+        <span>C++ map</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#map-的定义">
+        <span class="has-mr-6">3.1</span>
+        <span>map 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-容器内元素的访问">
+        <span class="has-mr-6">3.2</span>
+        <span>map 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-常用函数实例解析">
+        <span class="has-mr-6">3.3</span>
+        <span>map 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-的常见用途">
+        <span class="has-mr-6">3.4</span>
+        <span>map 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#c-pair">
+        <span class="has-mr-6">4</span>
+        <span>c++ pair</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#pair-的定义">
+        <span class="has-mr-6">4.1</span>
+        <span>pair 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-中元素的访问">
+        <span class="has-mr-6">4.2</span>
+        <span>pair 中元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-常用函数实例解析">
+        <span class="has-mr-6">4.3</span>
+        <span>pair 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-的常见用途">
+        <span class="has-mr-6">4.4</span>
+        <span>pair 的常见用途</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#序列性容器">
+        <span class="has-mr-6">1</span>
+        <span>序列性容器</span>
+        </a></li><li>
+        <a class="is-flex" href="#Vector">
+        <span class="has-mr-6">2</span>
+        <span>Vector</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#vector定义">
+        <span class="has-mr-6">2.1</span>
+        <span>vector定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector元素的访问">
+        <span class="has-mr-6">2.2</span>
+        <span>vector元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector-常用函数实例解析">
+        <span class="has-mr-6">2.3</span>
+        <span>vector 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#vector-常见用途">
+        <span class="has-mr-6">2.4</span>
+        <span>vector 常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-map">
+        <span class="has-mr-6">3</span>
+        <span>C++ map</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#map-的定义">
+        <span class="has-mr-6">3.1</span>
+        <span>map 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-容器内元素的访问">
+        <span class="has-mr-6">3.2</span>
+        <span>map 容器内元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-常用函数实例解析">
+        <span class="has-mr-6">3.3</span>
+        <span>map 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#map-的常见用途">
+        <span class="has-mr-6">3.4</span>
+        <span>map 的常见用途</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#c-pair">
+        <span class="has-mr-6">4</span>
+        <span>c++ pair</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#pair-的定义">
+        <span class="has-mr-6">4.1</span>
+        <span>pair 的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-中元素的访问">
+        <span class="has-mr-6">4.2</span>
+        <span>pair 中元素的访问</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-常用函数实例解析">
+        <span class="has-mr-6">4.3</span>
+        <span>pair 常用函数实例解析</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair-的常见用途">
+        <span class="has-mr-6">4.4</span>
+        <span>pair 的常见用途</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="C++标准模板库STL(一)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

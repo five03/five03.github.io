@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>⑧Android开发-Activity（二） - Hexo</title>
+
+
+    <meta name="description" content="Intent | Activity的启动模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="⑧Android开发-Activity（二）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;02&#x2F;15&#x2F;Android%E5%BC%80%E5%8F%91-Activity2&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Intent | Activity的启动模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-02-15T13:04:15.000Z">
+<meta property="article:modified_time" content="2019-12-21T07:12:24.839Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="⑧Android开发-Activity（二）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2073 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ⑧Android开发-Activity（二）
+            
+        </h1>
+        <div class="content">
+            <center>Intent | Activity的启动模式</center>
+<a id="more"></a>
+
+<h1 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h1><p>Intent是一个可以消息传递对象，可以通过它来进行组件之间的信息传递。Intent主要有以下三个作用：</p>
+<ul>
+<li>开启一个activity</li>
+<li>开启一个service</li>
+<li>发送广播消息</li>
+</ul>
+<p>包含六大属性：</p>
+<ul>
+<li>Action：动作</li>
+<li>Category：分类</li>
+<li>Data：数据</li>
+<li>ComponentName：组件名</li>
+<li>Extra：额外的数据</li>
+<li>Flag：标记</li>
+</ul>
+<h2 id="ComponentName（组件名）"><a href="#ComponentName（组件名）" class="headerlink" title="ComponentName（组件名）"></a>ComponentName（组件名）</h2><p>组件名用来处理Intent的匹配问题，它可以被设置，也可以不被设置。设置了组件名的Intent叫做显示Intent，这种Intent在匹配时将直接使用组件名里的参数</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="hljs-keyword">new</span> Intent();</span><br><span class="line">ComponentName cn = <span class="hljs-keyword">new</span> ComponentName(<span class="hljs-keyword">this</span>,NewActivity<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">intent.setComponent(cn);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<p>不设置组件名的Intent叫做隐式Intent，这种Intent在匹配时将会从Action、Data（URI和Type）或Category中寻找匹配信息。</p>
+<h2 id="Category（分类）"><a href="#Category（分类）" class="headerlink" title="Category（分类）"></a>Category（分类）</h2><p>一个含有Intent的附加信息的字符串，这些信息可以决定哪种组件应该处理这个Intent，进一步筛选到底需要处理的内容。</p>
+<table>
+<thead>
+<tr>
+<th>Category常量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>category_HOME</td>
+<td>显示Home界面的Activity，可以使用这个常量来显示Home界面</td>
+</tr>
+<tr>
+<td>category_LAUNCHER</td>
+<td>位于一个作业的Activity栈栈底的Activity，是这个作业的初始Activity，一般就是一个应用的入口Activity</td>
+</tr>
+<tr>
+<td>category_DEFAULT</td>
+<td>默认的，Android系统会给隐式Intent自动加上这个值（隐式启动）</td>
+</tr>
+</tbody></table>
+<p>Category一般被设置在IntentFilter中，对于显示Intent，如果不指定Category，则无论IntentFilter的内容是什么都是匹配的。</p>
+<h2 id="Extra（额外的数据）"><a href="#Extra（额外的数据）" class="headerlink" title="Extra（额外的数据）"></a>Extra（额外的数据）</h2><p>Extras属性主要用于传递目标组件所需要的额外的数据。通过<code>putExtra(键值对)</code>键是字符串类型或<code>putExtras()</code>传递的是一个bundle类型对象，该对象可以放置很多数据。</p>
+<h2 id="Data（数据）"><a href="#Data（数据）" class="headerlink" title="Data（数据）"></a>Data（数据）</h2><p>Data属性包括两部分，URI（通过资源标识符）和Type（MIME类型）。常用的Data取值：</p>
+<table>
+<thead>
+<tr>
+<th>Data取值</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>file:///</td>
+<td>本地文件数据，后接文件路径</td>
+<td>file:///mnt/sdcard/mp3/a.mp3</td>
+</tr>
+<tr>
+<td>mailto://</td>
+<td>电子邮件，后接收件人地址</td>
+<td>mailto://xxx@163.com</td>
+</tr>
+<tr>
+<td>geo://</td>
+<td>地理位置信息，后接经纬度</td>
+<td>geo://47.231810,-53.519061</td>
+</tr>
+<tr>
+<td>smsto:</td>
+<td>短信，后接目标号码</td>
+<td>smsto:+86186xxx</td>
+</tr>
+<tr>
+<td>tel://</td>
+<td>短信，后接目标号码</td>
+<td>tel://+86186xxx</td>
+</tr>
+<tr>
+<td>content:///</td>
+<td>内容，后接内容定位</td>
+<td>content://contacts/people/1</td>
+</tr>
+<tr>
+<td>http://</td>
+<td>超文本，后接网络资源的URI</td>
+<td><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></td>
+</tr>
+</tbody></table>
+<h2 id="Flag（标志）"><a href="#Flag（标志）" class="headerlink" title="Flag（标志）"></a>Flag（标志）</h2><p>Flag属性多用于Task和Activity栈的处理中，可以通过不同的Flags告诉系统一个Activity属于哪个Task、一个Activity被启动或停止后在Activity栈中的位置如何改变等等。</p>
+<h2 id="Action（动作）"><a href="#Action（动作）" class="headerlink" title="Action（动作）"></a>Action（动作）</h2><p>描述Intent将要完成什么动作，为了区别当前的Intent对象进行使用，类型是String<code>Android.Intents.action.MAIN</code>,这个值在每个AndroidManifest.xml文档中都可以看到，它标记当前Activity作为一个程序的入口。可以使用内置的Action与Data属性配合，来实现打电话、发短信、浏览网页等功能。</p>
+<p>启动一个Activity一般有两种形式，分别是显示启动和隐式启动：</p>
+<ul>
+<li><p>显示启动：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="hljs-keyword">new</span> Intent(当前的activity.<span class="hljs-keyword">this</span>,目标的Activity<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>隐式启动：</p>
+<p>如果需要实现隐式启动，一般使用action和data或者action和category结合。</p>
+<ol>
+<li><strong>action和category结合</strong></li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="hljs-keyword">new</span> Intent();</span><br><span class="line"><span class="hljs-comment">//设定Action动作</span></span><br><span class="line">intent.setAction(<span class="hljs-string">"当前包名.MainActivity.action"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<p>AndroidManifest.xml中定义action属性</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">activity</span> <span class="hljs-attr">android</span>：<span class="hljs-attr">name</span>=<span class="hljs-string">"包名.跳转的Activity"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span></span><br><span class="line">    	<span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"包名.当前的Activity"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category_DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p><strong>action和data结合</strong></p>
+<p>当前页面</p>
+</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">brn.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="hljs-keyword">new</span> Intent(当前的Activity.<span class="hljs-keyword">this</span>,跳转的Activity<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">        <span class="hljs-comment">//将数据放入intent</span></span><br><span class="line">        intent.put(<span class="hljs-string">"info"</span>,EditText.getText().toString());</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>   跳转页面</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//首先获取传递过来的intent对象</span></span><br><span class="line"><span class="hljs-keyword">if</span>(getIntent()!=<span class="hljs-keyword">null</span>)&#123;</span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    String info = intent.getStringExtra(<span class="hljs-string">"info"</span>);</span><br><span class="line">    TextView.setText(info);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>如果数据量大的话可以使用bundle</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Bundle bundle = <span class="hljs-keyword">new</span> Bundle();</span><br><span class="line">bundle.putString(<span class="hljs-string">"info"</span>,EditText.getText().toString());</span><br><span class="line">intent.putExtras(bundle);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(getIntent()!=<span class="hljs-keyword">null</span>)&#123;</span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    Bundle bundle = intent.getExtras();</span><br><span class="line">    String info = bundle.getString(<span class="hljs-string">"info"</span>,<span class="hljs-string">"未接收到数据"</span>);</span><br><span class="line">    TextView.setText(info);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常见的系统内置Action</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Action常量</th>
+<th>目标组件</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACTION_CALL</td>
+<td>Activity</td>
+<td>直接拨打Data属性指定的电话号码</td>
+</tr>
+<tr>
+<td>ACTION_EDIT</td>
+<td>Activity</td>
+<td>给用户显示可编辑的数据</td>
+</tr>
+<tr>
+<td>ACTION_MAIN</td>
+<td>Activity</td>
+<td>开启一个Activity并将其作为一个作业（Task）的初始Activity，并且不带输入和返回信息。通俗讲就是开启一个Activity并将其作为在应用的入口Activity。</td>
+</tr>
+<tr>
+<td>ACTION_SYNC</td>
+<td>Activity</td>
+<td>同步服务器上的数据和移动设备中的数据</td>
+</tr>
+<tr>
+<td>ACTION_DIAL</td>
+<td>Activity</td>
+<td>将Data中的电话号码放入拨打电话的界面中，显示给用户，供用户手动播出这个号码。</td>
+</tr>
+<tr>
+<td>ACTION_VIEW</td>
+<td>Activity</td>
+<td>使用与Data中数据相对应的应用程序来显示Data中指定的数据</td>
+</tr>
+<tr>
+<td>ACTION_SEND</td>
+<td>Activity</td>
+<td>发送数据</td>
+</tr>
+<tr>
+<td>ACTION_SENDTO</td>
+<td>Activity</td>
+<td>使用与Data中指定的数据相对应的应用，程序向Data中所指定的地址发送数据。</td>
+</tr>
+<tr>
+<td>ACTION_BATTERY_LOW</td>
+<td>Broadcast Receiver</td>
+<td>一个电池电量低的警告</td>
+</tr>
+<tr>
+<td>ACTION_TIMEZONE_CHANGED</td>
+<td>Broadcast Receiver</td>
+<td>时区改变的广播</td>
+</tr>
+<tr>
+<td>ACTION_SCREE_ON</td>
+<td>Broadcast Receiver</td>
+<td>屏幕被打开</td>
+</tr>
+</tbody></table>
+<h2 id="Intent的Data属性实现拨号、发送短信、打开网页效果"><a href="#Intent的Data属性实现拨号、发送短信、打开网页效果" class="headerlink" title="Intent的Data属性实现拨号、发送短信、打开网页效果"></a>Intent的Data属性实现拨号、发送短信、打开网页效果</h2><ul>
+<li><p>效果预览</p>
+<img src="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/3.gif">
+</li>
+<li><p>代码实现：</p>
+<p><strong>MainActivity.java</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Button btn;</span><br><span class="line">    <span class="hljs-keyword">private</span> EditText editText;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        btn = findViewById(R.id.main_btn);</span><br><span class="line">        editText = findViewById(R.id.main_edit);</span><br><span class="line"></span><br><span class="line">        btn.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="hljs-meta">@Override</span></span><br><span class="line">            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;</span><br><span class="line">                Intent intent = <span class="hljs-keyword">new</span> Intent(MainActivity.<span class="hljs-keyword">this</span>,NewActivity<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</span><br><span class="line">                Bundle bundle = <span class="hljs-keyword">new</span> Bundle();</span><br><span class="line">                bundle.putString(<span class="hljs-string">"info"</span>,editText.getText().toString());</span><br><span class="line">                intent.putExtras(bundle);</span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>NewActivity.java</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Button btn;</span><br><span class="line">    <span class="hljs-keyword">private</span> TextView tv;</span><br><span class="line">    String info;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.new_activity);</span><br><span class="line">        btn = findViewById(R.id.new_button);</span><br><span class="line">        tv = findViewById(R.id.textview1);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//首先获取传递过来的信息</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(getIntent()!=<span class="hljs-keyword">null</span>)&#123;</span><br><span class="line">            Intent i = getIntent();</span><br><span class="line">            Bundle bundle = i.getExtras();</span><br><span class="line">            info = bundle.getString(<span class="hljs-string">"info"</span>);</span><br><span class="line">            tv.setText(info);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">//点击按钮时实现跳转到拨号页面</span></span><br><span class="line">        btn.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="hljs-meta">@Override</span></span><br><span class="line">            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>&#123;</span><br><span class="line">                takeCall(info);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//跳转到拨号页面</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">takeCall</span><span class="hljs-params">(String info)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="hljs-keyword">new</span> Intent();</span><br><span class="line">        <span class="hljs-comment">//实现隐式跳转</span></span><br><span class="line">        <span class="hljs-comment">//uri.parse是将已经字符串类型转化为Uri的类型的办法</span></span><br><span class="line">        <span class="hljs-comment">//Uri是一个唯一性标的标示字段</span></span><br><span class="line">        intent.setData(Uri.parse(<span class="hljs-string">"tel://"</span>+info));</span><br><span class="line">        intent.setAction(Intent.ACTION_DIAL);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong></p>
+<p>若使用<code>ACTION_CALL</code>，则需定义权限</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.CALL_PHONE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="Activity的启动模式"><a href="#Activity的启动模式" class="headerlink" title="Activity的启动模式"></a>Activity的启动模式</h1><p>启动应用程序就会开启Activity栈，位于栈顶的Activity被用户可见，每启动一次Activity都会将该Activity的实例加入到Activity中，启动一个Activity的时候有四种模式，分别是：<strong>Standard（系统默认）、SingleTask、SingleTop、SingleInstance</strong>，每种启动模式操作的Activity都有所不同。</p>
+<p>在AndroidManifest.xml定义：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:lunchMode="Standard/SingleTask/SingleTop/SingleInstance"</span><br></pre></td></tr></table></figure>
+
+<h2 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h2><p>标准的启动模式，该模式可以被设定，不在manifest设定时候，Activity的默认模式就是standard。在该模式下，启动的Activity会依照启动顺序被依次压入Task中：</p>
+<p><strong>问题：</strong>实现页面一跳转到页面二，再由页面二跳转到页面一。</p>
+<img src="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/1.png">
+
+<h2 id="SingleTop"><a href="#SingleTop" class="headerlink" title="SingleTop"></a>SingleTop</h2><p>在该模式下，如果栈顶Activity为我们要新建的Activity（目标Activity），那么就不会重复创建新的Activity，而是复用位于栈顶的Activity对象，如果不位于栈顶，任就会重新创建Activity的实例对象。</p>
+<img src="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/2.png">
+
+<h2 id="SingleTask"><a href="#SingleTask" class="headerlink" title="SingleTask"></a>SingleTask</h2><p>在启动Activity的时候，如果该Activity位于栈中，就会复用该Activity，这样的话，在该实例上的所有Activity都依次进行出栈，执行对应的onDestroy方法，直到当前需要启动的Activity位于栈顶。</p>
+<p><strong>问题：</strong>网页图集由第40个Activity跳转到第1个Activity、一键退出</p>
+<img src="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/4.png">
+
+<h2 id="SingleInstance"><a href="#SingleInstance" class="headerlink" title="SingleInstance"></a>SingleInstance</h2><p>启动Activity时，会复用已经存在的Activity实例，不管这个Activity的实例是位于哪一个应用当中，都会共享已经启动的Activity实例对象。使用了SingleInstance启动模式的Activity会单独开启一个共享栈，这个栈中只存在当前的Activity实例对象。</p>
+<img src="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/5.png">
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android%E5%BC%80%E5%8F%91/" rel="tag">Android开发</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">⑨Android开发-网络通信</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/13/Android%E5%BC%80%E5%8F%91-Activity1/">
+                <span class="level-item">⑦Android开发-Activity（一）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/';
+        this.page.identifier = '2019/02/15/Android开发-Activity2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Intent">
+        <span class="has-mr-6">1</span>
+        <span>Intent</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ComponentName（组件名）">
+        <span class="has-mr-6">1.1</span>
+        <span>ComponentName（组件名）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Category（分类）">
+        <span class="has-mr-6">1.2</span>
+        <span>Category（分类）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Extra（额外的数据）">
+        <span class="has-mr-6">1.3</span>
+        <span>Extra（额外的数据）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Data（数据）">
+        <span class="has-mr-6">1.4</span>
+        <span>Data（数据）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Flag（标志）">
+        <span class="has-mr-6">1.5</span>
+        <span>Flag（标志）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Action（动作）">
+        <span class="has-mr-6">1.6</span>
+        <span>Action（动作）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Intent的Data属性实现拨号、发送短信、打开网页效果">
+        <span class="has-mr-6">1.7</span>
+        <span>Intent的Data属性实现拨号、发送短信、打开网页效果</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Activity的启动模式">
+        <span class="has-mr-6">2</span>
+        <span>Activity的启动模式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Standard">
+        <span class="has-mr-6">2.1</span>
+        <span>Standard</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleTop">
+        <span class="has-mr-6">2.2</span>
+        <span>SingleTop</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleTask">
+        <span class="has-mr-6">2.3</span>
+        <span>SingleTask</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleInstance">
+        <span class="has-mr-6">2.4</span>
+        <span>SingleInstance</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Intent">
+        <span class="has-mr-6">1</span>
+        <span>Intent</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ComponentName（组件名）">
+        <span class="has-mr-6">1.1</span>
+        <span>ComponentName（组件名）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Category（分类）">
+        <span class="has-mr-6">1.2</span>
+        <span>Category（分类）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Extra（额外的数据）">
+        <span class="has-mr-6">1.3</span>
+        <span>Extra（额外的数据）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Data（数据）">
+        <span class="has-mr-6">1.4</span>
+        <span>Data（数据）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Flag（标志）">
+        <span class="has-mr-6">1.5</span>
+        <span>Flag（标志）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Action（动作）">
+        <span class="has-mr-6">1.6</span>
+        <span>Action（动作）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Intent的Data属性实现拨号、发送短信、打开网页效果">
+        <span class="has-mr-6">1.7</span>
+        <span>Intent的Data属性实现拨号、发送短信、打开网页效果</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Activity的启动模式">
+        <span class="has-mr-6">2</span>
+        <span>Activity的启动模式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Standard">
+        <span class="has-mr-6">2.1</span>
+        <span>Standard</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleTop">
+        <span class="has-mr-6">2.2</span>
+        <span>SingleTop</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleTask">
+        <span class="has-mr-6">2.3</span>
+        <span>SingleTask</span>
+        </a></li><li>
+        <a class="is-flex" href="#SingleInstance">
+        <span class="has-mr-6">2.4</span>
+        <span>SingleInstance</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="⑧Android开发-Activity（二）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

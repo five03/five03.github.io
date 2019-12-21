@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>微信小程序 - Hexo</title>
+
+
+    <meta name="description" content="小程序结构目录 | 配置文件JSON | 视图层View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;29&#x2F;%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="小程序结构目录 | 配置文件JSON | 视图层View">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="article:published_time" content="2019-01-29T04:04:12.000Z">
+<meta property="article:modified_time" content="2019-12-21T07:05:06.960Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="微信小程序" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-29T04:04:12.000Z">2019-01-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2072 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                微信小程序
+            
+        </h1>
+        <div class="content">
+            <center>小程序结构目录 | 配置文件JSON | 视图层View</center>
+<a id="more"></a>
+
+<p>微信小程序，简称小程序，英文名Mini Program，是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或搜一下即可打开应用。</p>
+<p>应用范围：内容/工具小程序、零售小程序、游戏/娱乐小程序等</p>
+<h1 id="1-小程序结构目录"><a href="#1-小程序结构目录" class="headerlink" title="1. 小程序结构目录"></a>1. 小程序结构目录</h1><p>小程序框架提供了自己的视图层描述语言<code>WXML</code>与<code>WXSS</code>，以及<code>JavaScript</code>，并在视图层与逻辑层提供了数据传输和事件系统，让开发者能够专注于逻辑。</p>
+<h2 id="1-1-与传统Web结构对比"><a href="#1-1-与传统Web结构对比" class="headerlink" title="1.1 与传统Web结构对比"></a>1.1 与传统Web结构对比</h2><table>
+<thead>
+<tr>
+<th>结构</th>
+<th>传统Web</th>
+<th>微信小程序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构</td>
+<td>HTML</td>
+<td>WXML</td>
+</tr>
+<tr>
+<td>样式</td>
+<td>CSS</td>
+<td>WXSS</td>
+</tr>
+<tr>
+<td>逻辑</td>
+<td>JavaScript</td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td>配置</td>
+<td>无</td>
+<td>JSON</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-基本项目目录"><a href="#1-2-基本项目目录" class="headerlink" title="1.2 基本项目目录"></a>1.2 基本项目目录</h2><ul>
+<li>pages————————————小程序对应的页面目录<ul>
+<li>index——————————-首页配置文件</li>
+<li>logs———————————子页面配置文件</li>
+</ul>
+</li>
+<li>utills————————————–自己封装的工具函数<ul>
+<li>app.js——————————-全局js</li>
+<li>app.json—————————全局配置文件</li>
+<li>app.wxss————————–全局样式文件</li>
+<li>project.config.json————-整个项目的描述文件，类似node中的package.json</li>
+</ul>
+</li>
+</ul>
+<img src="/2019/01/29/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/1.png">
+
+<h1 id="2-配置文件-JSON"><a href="#2-配置文件-JSON" class="headerlink" title="2. 配置文件 JSON"></a>2. 配置文件 JSON</h1><p>一个小程序应用包括最近的两种配置文件，一种是全局的<code>app.json</code>和页面自己的<code>pages.json</code></p>
+<p><strong>注意</strong>：配置文件中不能出现注释</p>
+<h2 id="2-1-全局配置文件-app-json"><a href="#2-1-全局配置文件-app-json" class="headerlink" title="2.1 全局配置文件 app.json"></a>2.1 全局配置文件 app.json</h2><p><code>app.json</code>是当前小程序的全局配置，包括小程序的所有页面路径、界面表现、网络超时时间、底部tab等，普通快速启动项目里的<code>app.json</code>配置</p>
+<figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="hljs-attr">"pages"</span>:[</span><br><span class="line">		<span class="hljs-string">"pages/index/index"</span>,</span><br><span class="line">		<span class="hljs-string">"pages/logs/logs"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="hljs-attr">"window"</span>:&#123;</span><br><span class="line">		<span class="hljs-attr">"backgroundTextStyle"</span>:<span class="hljs-string">"light"</span>,</span><br><span class="line">		<span class="hljs-attr">"navigationBarBackgroundColor"</span>: <span class="hljs-string">"#fff"</span>,</span><br><span class="line">		<span class="hljs-attr">"navigationBarTitleText"</span>: <span class="hljs-string">"WeChat"</span>,</span><br><span class="line">		<span class="hljs-attr">"navigationBarTextStyle"</span>:<span class="hljs-string">"black"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>字段含义：</strong></p>
+<ol>
+<li><code>pages</code>字段：用于描述当前小程序的所有页面路径，这是为了让微信客户端知道当前小程序页面定义在哪个目录。</li>
+<li><code>windows</code>字段：定义小程序所有页面的顶部背景颜色，文字颜色定义等。</li>
+</ol>
+<p>其他配置项细节可以参考文档 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html" target="_blank" rel="noopener">小程序的配置 app.json</a> 。</p>
+<h2 id="2-2-页面配置-page-json"><a href="#2-2-页面配置-page-json" class="headerlink" title="2.2 页面配置 page.json"></a>2.2 页面配置 page.json</h2><p>这里的 <code>page.json</code> 其实用来表示 pages/logs 目录下的 <code>logs.json</code> 这类和小程序页面相关的配置。</p>
+<p>如果你整个小程序的风格是蓝色调，那么你可以在 <code>app.json</code> 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 <code>page.json</code>，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等。</p>
+<p>其他配置项细节可以参考文档 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#页面配置" target="_blank" rel="noopener">页面配置</a> 。</p>
+<h1 id="3-视图层-View"><a href="#3-视图层-View" class="headerlink" title="3. 视图层 View"></a>3. 视图层 View</h1><p>WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合<a href="https://developers.weixin.qq.com/miniprogram/dev/component/index.html" target="_blank" rel="noopener">基础组件</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" target="_blank" rel="noopener">事件系统</a>，可以构建出页面的结构。</p>
+<h2 id="3-1-数据绑定"><a href="#3-1-数据绑定" class="headerlink" title="3.1 数据绑定"></a>3.1 数据绑定</h2><p>WXML 中的动态数据均来自对应 Page 的 data。</p>
+<h2 id="简单绑定"><a href="#简单绑定" class="headerlink" title="简单绑定"></a>简单绑定</h2><p>数据绑定使用 Mustache 语法（双大括号）将变量包起来，可以作用于：</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: 'Hello MINA!'</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="组件属性-需要在双引号之内"><a href="#组件属性-需要在双引号之内" class="headerlink" title="组件属性(需要在双引号之内)"></a>组件属性(需要在双引号之内)</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item-&#123;&#123;id&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    id: 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制属性-需要在双引号之内"><a href="#控制属性-需要在双引号之内" class="headerlink" title="控制属性(需要在双引号之内)"></a>控制属性(需要在双引号之内)</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">"&#123;&#123;condition&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    condition: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键字-需要在双引号之内"><a href="#关键字-需要在双引号之内" class="headerlink" title="关键字(需要在双引号之内)"></a>关键字(需要在双引号之内)</h3><p><code>true</code>：boolean 类型的 true，代表真值。</p>
+<p><code>false</code>： boolean 类型的 false，代表假值。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">checkbox</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"&#123;&#123;false&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">checkbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>特别注意：不要直接写 checked=”false”，其计算结果是一个字符串，转成 boolean 类型后代表真值。</em></strong></p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>可以在双括号内进行简单的运算，支持的有如下几种方式：</p>
+<h3 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">"&#123;&#123;flag ? true : false&#125;&#125;"</span>&gt;</span>Hidden<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125; + d<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2,</span><br><span class="line">    c: 3</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>view中的内容为 <code>3 + 3 + d</code>。</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">"&#123;&#123;length &gt; 5&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123;"hello" + name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    name: 'MINA'</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据路径运算"><a href="#数据路径运算" class="headerlink" title="数据路径运算"></a>数据路径运算</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123;object.key&#125;&#125; &#123;&#123;array[0]&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    object: &#123;</span><br><span class="line">      key: 'Hello '</span><br><span class="line">    &#125;,</span><br><span class="line">    array: ['MINA']</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>也可以在 Mustache 内直接进行组合，构成新的对象或者数组。</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[zero, 1, 2, 3, 4]&#125;&#125;"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    zero: 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最终组合成数组<code>[0, 1, 2, 3, 4]</code>。</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">"objectCombine"</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"&#123;&#123;for: a, bar: b&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最终组合成的对象是 <code>{for: 1, bar: 2}</code></p>
+<p>也可以用扩展运算符 <code>...</code> 来将一个对象展开</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">"objectCombine"</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"&#123;&#123;...obj1, ...obj2, e: 5&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    obj1: &#123;</span><br><span class="line">      a: 1,</span><br><span class="line">      b: 2</span><br><span class="line">    &#125;,</span><br><span class="line">    obj2: &#123;</span><br><span class="line">      c: 3,</span><br><span class="line">      d: 4</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最终组合成的对象是 <code>{a: 1, b: 2, c: 3, d: 4, e: 5}</code>。</p>
+<p>如果对象的 key 和 value 相同，也可以间接地表达。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">"objectCombine"</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"&#123;&#123;foo, bar&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    foo: 'my-foo',</span><br><span class="line">    bar: 'my-bar'</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最终组合成的对象是 <code>{foo: &#39;my-foo&#39;, bar:&#39;my-bar&#39;}</code>。</p>
+<p><strong>注意</strong>：上述方式可以随意组合，但是如有存在变量名相同的情况，后边的会覆盖前面，如：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">"objectCombine"</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"&#123;&#123;...obj1, ...obj2, a, c: 6&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    obj1: &#123;</span><br><span class="line">      a: 1,</span><br><span class="line">      b: 2</span><br><span class="line">    &#125;,</span><br><span class="line">    obj2: &#123;</span><br><span class="line">      b: 3,</span><br><span class="line">      c: 4</span><br><span class="line">    &#125;,</span><br><span class="line">    a: 5</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最终组合成的对象是 <code>{a: 5, b: 3, c: 6}</code>。</p>
+<p><strong>注意：</strong> 花括号和引号之间如果有空格，将最终被解析成为字符串</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1,2,3]&#125;&#125; "</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1,2,3] + ' '&#125;&#125;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-列表渲染"><a href="#3-2-列表渲染" class="headerlink" title="3.2 列表渲染"></a>3.2 列表渲染</h2><h3 id="wx-for"><a href="#wx-for" class="headerlink" title="wx:for"></a>wx:for</h3><p>在组件上使用 <code>wx:for</code> 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。</p>
+<p>默认数组的当前项的下标变量名默认为 <code>index</code>，数组当前项的变量名默认为 <code>item</code></p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;array&#125;&#125;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;index&#125;&#125;: &#123;&#123;item.message&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    array: [&#123;</span><br><span class="line">      message: 'foo',</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      message: 'bar'</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>wx:for-item</code> 可以指定数组当前元素的变量名，</p>
+<p>使用 <code>wx:for-index</code> 可以指定数组当前下标的变量名：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;array&#125;&#125;"</span> <span class="hljs-attr">wx:for-index</span>=<span class="hljs-string">"idx"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"itemName"</span>&gt;</span></span><br><span class="line">  &#123;&#123;idx&#125;&#125;: &#123;&#123;itemName.message&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>wx:for</code> 也可以嵌套，下边是一个九九乘法表</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"i"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;&#125;"</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">"j"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">"&#123;&#123;i &lt;= j&#125;&#125;"</span>&gt;</span></span><br><span class="line">      &#123;&#123;i&#125;&#125; * &#123;&#123;j&#125;&#125; = &#123;&#123;i * j&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="block-wx-for"><a href="#block-wx-for" class="headerlink" title="block wx:for"></a>block wx:for</h3><p>类似 <code>block wx:if</code>，也可以将 <code>wx:for</code> 用在<code>&lt;block/&gt;</code>标签上，以渲染一个包含多节点的结构块。例如：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1, 2, 3]&#125;&#125;"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123;index&#125;&#125;:<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="wx-key"><a href="#wx-key" class="headerlink" title="wx:key"></a>wx:key</h3><p>如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态（如 <a href="https://developers.weixin.qq.com/miniprogram/dev/component/input.html" target="_blank" rel="noopener">``</a> 中的输入内容，<a href="https://developers.weixin.qq.com/miniprogram/dev/component/switch.html" target="_blank" rel="noopener">``</a> 的选中状态），需要使用 <code>wx:key</code> 来指定列表中项目的唯一的标识符。</p>
+<p><code>wx:key</code> 的值以两种形式提供</p>
+<ol>
+<li>字符串，代表在 for 循环的 array 中 item 的某个 property，该 property 的值需要是列表中唯一的字符串或数字，且不能动态改变。</li>
+<li>保留关键字 <code>*this</code> 代表在 for 循环中的 item 本身，这种表示需要 item 本身是一个唯一的字符串或者数字，如：</li>
+</ol>
+<p>当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表渲染时的效率。</p>
+<p><strong>如不提供 wx:key，会报一个 warning， 如果明确知道该列表是静态，或者不必关注其顺序，可以选择忽略。</strong></p>
+<p><strong>示例代码：</strong></p>
+<p><a href="https://developers.weixin.qq.com/s/tpg5tKmv6kZt" target="_blank" rel="noopener">在开发者工具中预览效果</a></p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;objectArray&#125;&#125;"</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">"unique"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"display: block;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item.id&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">switch</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">"switch"</span>&gt;</span>Switch<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">"addToFront"</span>&gt;</span>Add to the front<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;numberArray&#125;&#125;"</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">"*this"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"display: block;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">switch</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">"addNumberToFront"</span>&gt;</span>Add to the front<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    objectArray: [</span><br><span class="line">      &#123;id: 5, unique: 'unique_5'&#125;,</span><br><span class="line">      &#123;id: 4, unique: 'unique_4'&#125;,</span><br><span class="line">      &#123;id: 3, unique: 'unique_3'&#125;,</span><br><span class="line">      &#123;id: 2, unique: 'unique_2'&#125;,</span><br><span class="line">      &#123;id: 1, unique: 'unique_1'&#125;,</span><br><span class="line">      &#123;id: 0, unique: 'unique_0'&#125;,</span><br><span class="line">    ],</span><br><span class="line">    numberArray: [1, 2, 3, 4]</span><br><span class="line">  &#125;,</span><br><span class="line">  switch(e) &#123;</span><br><span class="line">    const length = this.data.objectArray.length</span><br><span class="line">    for (let i = 0; i <span class="hljs-tag">&lt; <span class="hljs-attr">length</span>; ++<span class="hljs-attr">i</span>) &#123;</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">const</span> <span class="hljs-attr">x</span> = <span class="hljs-string">Math.floor(Math.random()</span> * <span class="hljs-attr">length</span>)</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">const</span> <span class="hljs-attr">y</span> = <span class="hljs-string">Math.floor(Math.random()</span> * <span class="hljs-attr">length</span>)</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">const</span> <span class="hljs-attr">temp</span> = <span class="hljs-string">this.data.objectArray[x]</span></span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">this.data.objectArray</span>[<span class="hljs-attr">x</span>] = <span class="hljs-string">this.data.objectArray[y]</span></span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">this.data.objectArray</span>[<span class="hljs-attr">y</span>] = <span class="hljs-string">temp</span></span></span><br><span class="line"><span class="hljs-tag">    &#125;</span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">this.setData</span>(&#123;</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">objectArray:</span> <span class="hljs-attr">this.data.objectArray</span></span></span><br><span class="line"><span class="hljs-tag">    &#125;)</span></span><br><span class="line"><span class="hljs-tag">  &#125;,</span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">addToFront</span>(<span class="hljs-attr">e</span>) &#123;</span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">const</span> <span class="hljs-attr">length</span> = <span class="hljs-string">this.data.objectArray.length</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">this.data.objectArray</span> = <span class="hljs-string">[&#123;id:</span> <span class="hljs-attr">length</span>, <span class="hljs-attr">unique:</span> '<span class="hljs-attr">unique_</span>' + <span class="hljs-attr">length</span>&#125;]<span class="hljs-attr">.concat</span>(<span class="hljs-attr">this.data.objectArray</span>)</span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">this.setData</span>(&#123;</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">objectArray:</span> <span class="hljs-attr">this.data.objectArray</span></span></span><br><span class="line"><span class="hljs-tag">    &#125;)</span></span><br><span class="line"><span class="hljs-tag">  &#125;,</span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">addNumberToFront</span>(<span class="hljs-attr">e</span>) &#123;</span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">this.data.numberArray</span> = <span class="hljs-string">[this.data.numberArray.length</span> + <span class="hljs-attr">1</span>]<span class="hljs-attr">.concat</span>(<span class="hljs-attr">this.data.numberArray</span>)</span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">this.setData</span>(&#123;</span></span><br><span class="line"><span class="hljs-tag">      <span class="hljs-attr">numberArray:</span> <span class="hljs-attr">this.data.numberArray</span></span></span><br><span class="line"><span class="hljs-tag">    &#125;)</span></span><br><span class="line"><span class="hljs-tag">  &#125;</span></span><br><span class="line"><span class="hljs-tag">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>当 <code>wx:for</code> 的值为字符串时，会将字符串解析成字符串数组</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"array"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;['a','r','r','a','y']&#125;&#125;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> 花括号和引号之间如果有空格，将最终被解析成为字符串</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1,2,3]&#125;&#125; "</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">"&#123;&#123;[1,2,3] + ' '&#125;&#125;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/11/Android%E5%BC%80%E5%8F%91-%E9%80%82%E9%85%8D%E5%99%A83/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">⑥Android开发-适配器（三）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/28/BLE%E5%BC%80%E5%8F%91-BLE%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%8F%8ATI%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/">
+                <span class="level-item">BLE开发-BLE协议栈及TI软件体系架构</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/01/29/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/';
+        this.page.identifier = '2019/01/29/微信小程序/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/head.png" alt="Hu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">Android开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/BLE%E5%BC%80%E5%8F%91/">
+            <span class="level-start">
+                <span class="level-item">BLE开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+            <span class="level-start">
+                <span class="level-item">微信小程序</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-小程序结构目录">
+        <span class="has-mr-6">1</span>
+        <span>1. 小程序结构目录</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-1-与传统Web结构对比">
+        <span class="has-mr-6">1.1</span>
+        <span>1.1 与传统Web结构对比</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-基本项目目录">
+        <span class="has-mr-6">1.2</span>
+        <span>1.2 基本项目目录</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#2-配置文件-JSON">
+        <span class="has-mr-6">2</span>
+        <span>2. 配置文件 JSON</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-全局配置文件-app-json">
+        <span class="has-mr-6">2.1</span>
+        <span>2.1 全局配置文件 app.json</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-页面配置-page-json">
+        <span class="has-mr-6">2.2</span>
+        <span>2.2 页面配置 page.json</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-视图层-View">
+        <span class="has-mr-6">3</span>
+        <span>3. 视图层 View</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#3-1-数据绑定">
+        <span class="has-mr-6">3.1</span>
+        <span>3.1 数据绑定</span>
+        </a></li><li>
+        <a class="is-flex" href="#简单绑定">
+        <span class="has-mr-6">3.2</span>
+        <span>简单绑定</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#内容">
+        <span class="has-mr-6">3.2.1</span>
+        <span>内容</span>
+        </a></li><li>
+        <a class="is-flex" href="#组件属性-需要在双引号之内">
+        <span class="has-mr-6">3.2.2</span>
+        <span>组件属性(需要在双引号之内)</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制属性-需要在双引号之内">
+        <span class="has-mr-6">3.2.3</span>
+        <span>控制属性(需要在双引号之内)</span>
+        </a></li><li>
+        <a class="is-flex" href="#关键字-需要在双引号之内">
+        <span class="has-mr-6">3.2.4</span>
+        <span>关键字(需要在双引号之内)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#运算">
+        <span class="has-mr-6">3.3</span>
+        <span>运算</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#三元运算">
+        <span class="has-mr-6">3.3.1</span>
+        <span>三元运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#算数运算">
+        <span class="has-mr-6">3.3.2</span>
+        <span>算数运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#逻辑判断">
+        <span class="has-mr-6">3.3.3</span>
+        <span>逻辑判断</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串运算">
+        <span class="has-mr-6">3.3.4</span>
+        <span>字符串运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据路径运算">
+        <span class="has-mr-6">3.3.5</span>
+        <span>数据路径运算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#组合">
+        <span class="has-mr-6">3.4</span>
+        <span>组合</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#数组">
+        <span class="has-mr-6">3.4.1</span>
+        <span>数组</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象">
+        <span class="has-mr-6">3.4.2</span>
+        <span>对象</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-2-列表渲染">
+        <span class="has-mr-6">3.5</span>
+        <span>3.2 列表渲染</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#wx-for">
+        <span class="has-mr-6">3.5.1</span>
+        <span>wx:for</span>
+        </a></li><li>
+        <a class="is-flex" href="#block-wx-for">
+        <span class="has-mr-6">3.5.2</span>
+        <span>block wx:for</span>
+        </a></li><li>
+        <a class="is-flex" href="#wx-key">
+        <span class="has-mr-6">3.5.3</span>
+        <span>wx:key</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:40:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/20/C-STL-1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C++标准模板库STL(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-20T13:39:07.000Z">2019-12-20</time></div>
+                    <a href="/2019/12/20/C-STL-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++标准模板库STL(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BLE开发-Android程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T11:53:30.395Z">2019-02-27</time></div>
+                    <a href="/2019/02/27/BLE%E5%BC%80%E5%8F%91-Android%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BLE开发-Android程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BLE%E5%BC%80%E5%8F%91/">BLE开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑨Android开发-网络通信">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-17T08:51:33.000Z">2019-02-17</time></div>
+                    <a href="/2019/02/17/Android%E5%BC%80%E5%8F%91-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑨Android开发-网络通信</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="⑧Android开发-Activity（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-15T13:04:15.000Z">2019-02-15</time></div>
+                    <a href="/2019/02/15/Android%E5%BC%80%E5%8F%91-Activity2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">⑧Android开发-Activity（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Android%E5%BC%80%E5%8F%91/">Android开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android%E5%BC%80%E5%8F%91/">
+                        <span class="tag">Android开发</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BLE%E5%BC%80%E5%8F%91/">
+                        <span class="tag">BLE开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">微信小程序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc" style="position:sticky; top: 20px; transition: all 2s;">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-小程序结构目录">
+        <span class="has-mr-6">1</span>
+        <span>1. 小程序结构目录</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-1-与传统Web结构对比">
+        <span class="has-mr-6">1.1</span>
+        <span>1.1 与传统Web结构对比</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-基本项目目录">
+        <span class="has-mr-6">1.2</span>
+        <span>1.2 基本项目目录</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#2-配置文件-JSON">
+        <span class="has-mr-6">2</span>
+        <span>2. 配置文件 JSON</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-全局配置文件-app-json">
+        <span class="has-mr-6">2.1</span>
+        <span>2.1 全局配置文件 app.json</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-页面配置-page-json">
+        <span class="has-mr-6">2.2</span>
+        <span>2.2 页面配置 page.json</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-视图层-View">
+        <span class="has-mr-6">3</span>
+        <span>3. 视图层 View</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#3-1-数据绑定">
+        <span class="has-mr-6">3.1</span>
+        <span>3.1 数据绑定</span>
+        </a></li><li>
+        <a class="is-flex" href="#简单绑定">
+        <span class="has-mr-6">3.2</span>
+        <span>简单绑定</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#内容">
+        <span class="has-mr-6">3.2.1</span>
+        <span>内容</span>
+        </a></li><li>
+        <a class="is-flex" href="#组件属性-需要在双引号之内">
+        <span class="has-mr-6">3.2.2</span>
+        <span>组件属性(需要在双引号之内)</span>
+        </a></li><li>
+        <a class="is-flex" href="#控制属性-需要在双引号之内">
+        <span class="has-mr-6">3.2.3</span>
+        <span>控制属性(需要在双引号之内)</span>
+        </a></li><li>
+        <a class="is-flex" href="#关键字-需要在双引号之内">
+        <span class="has-mr-6">3.2.4</span>
+        <span>关键字(需要在双引号之内)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#运算">
+        <span class="has-mr-6">3.3</span>
+        <span>运算</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#三元运算">
+        <span class="has-mr-6">3.3.1</span>
+        <span>三元运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#算数运算">
+        <span class="has-mr-6">3.3.2</span>
+        <span>算数运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#逻辑判断">
+        <span class="has-mr-6">3.3.3</span>
+        <span>逻辑判断</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串运算">
+        <span class="has-mr-6">3.3.4</span>
+        <span>字符串运算</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据路径运算">
+        <span class="has-mr-6">3.3.5</span>
+        <span>数据路径运算</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#组合">
+        <span class="has-mr-6">3.4</span>
+        <span>组合</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#数组">
+        <span class="has-mr-6">3.4.1</span>
+        <span>数组</span>
+        </a></li><li>
+        <a class="is-flex" href="#对象">
+        <span class="has-mr-6">3.4.2</span>
+        <span>对象</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-2-列表渲染">
+        <span class="has-mr-6">3.5</span>
+        <span>3.2 列表渲染</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#wx-for">
+        <span class="has-mr-6">3.5.1</span>
+        <span>wx:for</span>
+        </a></li><li>
+        <a class="is-flex" href="#block-wx-for">
+        <span class="has-mr-6">3.5.2</span>
+        <span>block wx:for</span>
+        </a></li><li>
+        <a class="is-flex" href="#wx-key">
+        <span class="has-mr-6">3.5.3</span>
+        <span>wx:key</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="微信小程序" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
